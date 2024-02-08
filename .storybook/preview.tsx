@@ -2,8 +2,8 @@ import React from "react";
 import type { Preview, ReactRenderer } from "@storybook/react";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 
-import { configApiRef } from '@backstage/core-plugin-api';
-import { ConfigReader } from '@backstage/core-app-api';
+import { configApiRef, errorApiRef } from '@backstage/core-plugin-api';
+import { ConfigReader, AlertApiForwarder, ErrorAlerter, ErrorApiForwarder } from '@backstage/core-app-api';
 import { lightTheme, darkTheme, createUnifiedTheme, UnifiedThemeProvider } from '@backstage/theme';
 import { TestApiProvider } from '@backstage/test-utils';
 
@@ -30,9 +30,12 @@ import {
 } from "../src/mui";
 
 const configApi = new ConfigReader({});
+const alertApi = new AlertApiForwarder();
+const errorApi = new ErrorAlerter(alertApi, new ErrorApiForwarder());
 
 export const apis = [
   [configApiRef, configApi],
+  [errorApiRef, errorApi],
 ] as const;
 
 const ThemeProvider = ({ theme, children }) => {
