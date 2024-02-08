@@ -2,10 +2,9 @@ import React from "react";
 import type { Preview, ReactRenderer } from "@storybook/react";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 
-
 import { configApiRef } from '@backstage/core-plugin-api';
 import { ConfigReader } from '@backstage/core-app-api';
-import { lightTheme, darkTheme } from '@backstage/theme';
+import { lightTheme, darkTheme, createUnifiedTheme, UnifiedThemeProvider } from '@backstage/theme';
 import { TestApiProvider } from '@backstage/test-utils';
 
 import {
@@ -17,6 +16,7 @@ import {
   ThemeProvider as MUIv5ThemeProvider,
   // adaptV4Theme,
   createTheme as createV5Theme,
+  CssBaseline,
 } from "@mui/material";
 
 import {
@@ -62,6 +62,12 @@ const ThemeProvider = ({ theme, children }) => {
     </MUIv5ThemeProvider>
   );
 
+  // result = (
+  //   <UnifiedThemeProvider theme={createUnifiedTheme(theme)}>
+  //     {result}
+  //   </UnifiedThemeProvider>
+  // );
+
   return result;
 }
 
@@ -83,14 +89,14 @@ const preview: Preview = {
         Helloween: helloweenThemeOptions,
         'Patternfly 4 Light': patternfly4LightThemeOptions,
         'Patternfly 4 Dark': patternfly4DarkThemeOptions,
-        'Patternfly 5 Light': patternfly5LightThemeOptions,
-        'Patternfly 5 Dark': patternfly5DarkThemeOptions,
+        // 'Patternfly 5 Light': patternfly5LightThemeOptions,
+        // 'Patternfly 5 Dark': patternfly5DarkThemeOptions,
         'Backstage Light': lightTheme,
         'Backstage Dark': darkTheme,
       },
       defaultTheme: "Light",
       Provider: ThemeProvider,
-      // GlobalStyles: CssBaseline,
+      GlobalStyles: CssBaseline,
     }),
   ],
 };
