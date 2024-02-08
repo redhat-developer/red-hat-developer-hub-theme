@@ -1,10 +1,10 @@
 import type { ThemeOptions } from "@material-ui/core/styles";
-// import type { Options } from "./options";
+import brown from '@material-ui/core/colors/brown';
 
 export const createThemeOptions = (): ThemeOptions => {
   return {
     palette: {
-      // mode: options.mode,
+      primary: brown,
     },
   };
 };

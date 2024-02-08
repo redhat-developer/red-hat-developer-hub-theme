@@ -4,4 +4,11 @@ export const themeOptions: ThemeOptions = {
   palette: {
     mode: "light",
   },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        disableRipple: true,  
+      },
+    },
+  },
 };
