@@ -8,13 +8,13 @@ export const themeOptions: ThemeOptions = {
   },
   typography: {
     button: {
-      textTransform: 'none'
-    }
+      textTransform: "none",
+    },
   },
   components: {
     MuiButton: {
       defaultProps: {
-        disableRipple: true,  
+        disableRipple: true,
       },
     },
     MuiTabs: {
@@ -24,15 +24,15 @@ export const themeOptions: ThemeOptions = {
         },
         TabIndicatorProps: {
           style: {
-            height: '3px',
-            backgroundColor: 'red',
+            height: "3px",
+            backgroundColor: "red",
           },
         },
       },
       styleOverrides: {
         root: {
           // border: solid var(--pf-v5-c-tabs--before--BorderColor);
-          borderBottom: '1px solid #d2d2d2',
+          borderBottom: "1px solid #d2d2d2",
         },
       },
     },
@@ -43,14 +43,14 @@ export const themeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           // backgroundColor: 'gray',
-          minWidth: 'auto',
-          padding: '16px 8px',
+          minWidth: "auto",
+          padding: "16px 8px",
         },
         // selected: {
         //   backgroundColor: 'lightred',
         // },
         disabled: {
-          backgroundColor: 'gray',
+          backgroundColor: "gray",
         },
       },
     },

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -41,7 +41,7 @@ export const BasicButtons: StoryObj = {
           </Grid>
         ))}
       </Grid>
-    )
+    );
   },
 };
 

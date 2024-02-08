@@ -7,7 +7,7 @@ export const themeOptions: ThemeOptions = {
   components: {
     MuiButton: {
       defaultProps: {
-        disableRipple: true,  
+        disableRipple: true,
       },
     },
   },

@@ -15,17 +15,25 @@ export const ButtonVariants: StoryObj = {
   render: (args) => (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
-      <ButtonGroup variant="contained" aria-label="outlined primary button group" {...args}>
+      <ButtonGroup
+        variant="contained"
+        aria-label="outlined primary button group"
+        {...args}
+      >
         <Button {...args}>One</Button>
         <Button {...args}>Two</Button>
         <Button {...args}>Three</Button>
       </ButtonGroup>
-      <ButtonGroup variant="outlined" aria-label="outlined button group" {...args}>
+      <ButtonGroup
+        variant="outlined"
+        aria-label="outlined button group"
+        {...args}
+      >
         <Button {...args}>One</Button>
         <Button {...args}>Two</Button>
         <Button {...args}>Three</Button>
@@ -43,9 +51,9 @@ export const Sizes: StoryObj = {
   render: () => (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
       <ButtonGroup size="small" aria-label="small button group">

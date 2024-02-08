@@ -32,7 +32,7 @@ export const HorizontalTabs: StoryObj = {
       { label: "Tab 4 (a much much much much much much too long label)" },
     ];
     const [selectedValue, setSelectedValue] = React.useState(0);
-  
+
     return (
       <Tabs
         value={selectedValue}
@@ -40,17 +40,19 @@ export const HorizontalTabs: StoryObj = {
         orientation="horizontal"
         {...args}
       >
-        {tabs.map((tab) => <Tab key={tab.label} {...tab} />)}
+        {tabs.map((tab) => (
+          <Tab key={tab.label} {...tab} />
+        ))}
       </Tabs>
-    )
+    );
   },
 };
 
 export const HorizontalesScrollingTabs: StoryObj = {
   render: (args) => {
-    const tabs = Array.from({ length: 20 }, (_, i) => ({ label: `Tab ${i}` })); 
+    const tabs = Array.from({ length: 20 }, (_, i) => ({ label: `Tab ${i}` }));
     const [selectedValue, setSelectedValue] = React.useState(0);
-  
+
     return (
       <Tabs
         value={selectedValue}
@@ -59,9 +61,11 @@ export const HorizontalesScrollingTabs: StoryObj = {
         variant="scrollable"
         {...args}
       >
-        {tabs.map((tab) => <Tab key={tab.label} {...tab} />)}
+        {tabs.map((tab) => (
+          <Tab key={tab.label} {...tab} />
+        ))}
       </Tabs>
-    )
+    );
   },
 };
 
@@ -74,7 +78,7 @@ export const VerticalTabs: StoryObj = {
       { label: "Tab 4 (disabled)", disabled: true },
     ];
     const [selectedValue, setSelectedValue] = React.useState(0);
-  
+
     return (
       <Tabs
         value={selectedValue}
@@ -82,8 +86,10 @@ export const VerticalTabs: StoryObj = {
         orientation="vertical"
         {...args}
       >
-        {tabs.map((tab) => <Tab key={tab.label} {...tab} />)}
+        {tabs.map((tab) => (
+          <Tab key={tab.label} {...tab} />
+        ))}
       </Tabs>
-    )
+    );
   },
 };
