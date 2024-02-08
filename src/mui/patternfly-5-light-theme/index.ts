@@ -19,19 +19,17 @@ export const themeOptions: ThemeOptions = {
     },
     MuiTabs: {
       defaultProps: {
-        sx: {
-          // borderTop: '1px solid red',
-        },
         TabIndicatorProps: {
           style: {
             height: "3px",
-            backgroundColor: "red",
+            color: "#151515",
+            backgroundColor: "#1fa7f8",
           },
         },
+        textColor: "inherit",
       },
       styleOverrides: {
         root: {
-          // border: solid var(--pf-v5-c-tabs--before--BorderColor);
           borderBottom: "1px solid #d2d2d2",
         },
       },
@@ -42,15 +40,20 @@ export const themeOptions: ThemeOptions = {
       },
       styleOverrides: {
         root: {
-          // backgroundColor: 'gray',
           minWidth: "auto",
           padding: "16px 8px",
         },
-        // selected: {
-        //   backgroundColor: 'lightred',
-        // },
         disabled: {
           backgroundColor: "gray",
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            boxShadow: "0 -3px #b8bbbe inset",
+          },
         },
       },
     },
