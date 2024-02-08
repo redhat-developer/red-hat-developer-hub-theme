@@ -1,5 +1,5 @@
 {
-  "name": "mui-themes",
+  "name": "@jerolimov/mui-themes",
   "description": "MUI Material UI themes",
   "version": "0.0.1",
   "author": "Christoph Jerolimov",
@@ -9,7 +9,8 @@
     "lint": "eslint src && prettier --check src",
     "fix": "prettier --write src",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "changeset": "changeset"
   },
   "files": [
     "src",
@@ -28,6 +29,7 @@
     "@backstage/plugin-stack-overflow": "^0.1.24",
     "@backstage/test-utils": "^1.4.7",
     "@backstage/theme": "^0.5.0",
+    "@changesets/cli": "^2.27.1",
     "@material-table/core": "^6.3.2",
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@react-hookz/web": "^24.0.4",
