@@ -11,6 +11,10 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "devDependencies": {
     "@backstage/core-plugin-api": "^1.8.2",
     "@backstage/plugin-azure-devops-common": "^0.3.2",

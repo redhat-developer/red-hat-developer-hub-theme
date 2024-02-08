@@ -1,7 +1,22 @@
+.PHONY: init
 init:
 	git submodule init
 	if [ ! -d "node_modules" ]; then npm install; fi
 
+.PHONY: pack
+pack:
+	rm -rf dist *.tgz
+	npm run build
+	npm pack
+	tar -tzf *mui-themes*.tgz
+
+.PHONY: publish
+publish:
+	rm -rf dist
+	npm run build
+	npm publish --access=public
+
+.PHONY: update-backstage
 update-backstage:
 	git submodule update --remote
 	if [ ! -d "node_modules" ]; then npm install; fi
