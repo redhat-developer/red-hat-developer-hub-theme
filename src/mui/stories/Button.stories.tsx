@@ -7,7 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "MUI/Button",
+  title: "MUI-v5/Button",
   argTypes: {
     variant: {
       control: "inline-radio",

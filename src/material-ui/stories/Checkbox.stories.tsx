@@ -9,7 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material-UI/Checkbox",
+  title: "MUI-v4/Checkbox",
   argTypes: {
     onChange: { action: "changed" },
   },

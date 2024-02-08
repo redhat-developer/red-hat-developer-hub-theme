@@ -4,7 +4,7 @@ import Tab from '@material-ui/core/Tab';
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material-UI/Tabs",
+  title: "MUI-v4/Tabs",
   argTypes: {
     textColor: {
       control: "inline-radio",

@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "MUI/ButtonGroup",
+  title: "MUI-v5/ButtonGroup",
   argTypes: {
     onClick: { action: "clicked" },
   },

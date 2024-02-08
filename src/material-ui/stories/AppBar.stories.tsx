@@ -9,7 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material-UI/AppBar",
+  title: "MUI-v4/AppBar",
   argTypes: {
     onClick: { action: "clicked" },
   },
