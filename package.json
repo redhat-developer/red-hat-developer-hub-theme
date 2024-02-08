@@ -3,5 +3,8 @@
   "description": "Material UI themes",
   "version": "0.0.1",
   "author": "Christoph Jerolimov",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.2"
+  }
 }
