@@ -57,5 +57,9 @@
     "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.20"
+  },
+  "overrides": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
