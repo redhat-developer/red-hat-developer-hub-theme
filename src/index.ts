@@ -1,1 +1,1 @@
-export * as material from "./material";
+export * as material from "./material-ui";

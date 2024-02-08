@@ -1,15 +1,15 @@
 import React from "react";
-import Box from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormLabel from '@mui/material/FormLabel';
+import Box from '@material-ui/core/Box';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormLabel from '@material-ui/core/FormLabel';
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material/Checkbox",
+  title: "Material-UI/Checkbox",
   argTypes: {
     onChange: { action: "changed" },
   },
@@ -19,7 +19,7 @@ export const WithLabels: StoryObj = {
   render: (args) => (
     <FormGroup>
       <FormControlLabel control={<Checkbox defaultChecked />} label="Label" {...args} />
-      <FormControlLabel required control={<Checkbox />} label="Required" {...args} />
+      <FormControlLabel control={<Checkbox />} label="Required" {...args} />
       <FormControlLabel disabled control={<Checkbox />} label="Disabled" {...args} />
     </FormGroup>
   ),
@@ -45,7 +45,7 @@ export const FormGroupExample: StoryObj = {
   
     return (
       <Box sx={{ display: 'flex' }}>
-        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+        <FormControl component="fieldset" variant="standard">
           <FormLabel component="legend">Assign responsibility</FormLabel>
           <FormGroup {...args}>
             <FormControlLabel
@@ -76,7 +76,6 @@ export const FormGroupExample: StoryObj = {
           required
           error={error}
           component="fieldset"
-          sx={{ m: 3 }}
           variant="standard"
         >
           <FormLabel component="legend">Pick two</FormLabel>

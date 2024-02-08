@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material/Autocomplete",
+  title: "MUI/Autocomplete",
   argTypes: {
     onOpen: { action: "opened" },
     onChange: { action: "changed" },

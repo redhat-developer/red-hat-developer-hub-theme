@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import Box from "@mui/material/Box";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Box from "@material-ui/core/Box";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material/ButtonGroup",
+  title: "Material-UI/ButtonGroup",
   argTypes: {
     onClick: { action: "clicked" },
   },
@@ -18,9 +18,6 @@ export const ButtonVariants: StoryObj = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        '& > *': {
-          m: 1,
-        },
       }}
     >
       <ButtonGroup variant="contained" aria-label="outlined primary button group" {...args}>
@@ -49,9 +46,6 @@ export const Sizes: StoryObj = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        '& > *': {
-          m: 1,
-        },
       }}
     >
       <ButtonGroup size="small" aria-label="small button group">

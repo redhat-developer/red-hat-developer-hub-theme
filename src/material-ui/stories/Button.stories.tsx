@@ -1,13 +1,13 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import Grid from '@material-ui/core/Grid';
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
-  title: "Material/Button",
+  title: "Material-UI/Button",
   argTypes: {
     variant: {
       control: "inline-radio",
@@ -23,24 +23,31 @@ export default {
 } satisfies Meta;
 
 export const BasicButtons: StoryObj = {
-  render: (args) => (
-    <Stack spacing={2} direction="row">
-      <Button variant="text" {...args}>
-        Text
-      </Button>
-      <Button variant="contained" {...args}>
-        Contained
-      </Button>
-      <Button variant="outlined" {...args}>
-        Outlined
-      </Button>
-    </Stack>
-  ),
+  render: (args) => {
+    const variants = ["text", "contained", "outlined"] as const;
+    const colors = ["default", "inherit", "primary", "secondary"] as const;
+
+    return (
+      <Grid container spacing={2}>
+        {colors.map((color) => (
+          <Grid key={color} container item>
+            {variants.map((variant) => (
+              <Grid key={variant} item>
+                <Button {...args} variant={variant} color={color}>
+                  {variant}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
+        ))}
+      </Grid>
+    )
+  },
 };
 
 export const TextButtons: StoryObj = {
   render: (args) => (
-    <Stack spacing={2} direction="row">
+    <Grid spacing={2} direction="row">
       <Button {...args}>Primary</Button>
       <Button disabled {...args}>
         Disabled
@@ -48,13 +55,13 @@ export const TextButtons: StoryObj = {
       <Button href="#text-buttons" {...args}>
         Link
       </Button>
-    </Stack>
+    </Grid>
   ),
 };
 
 export const Sizes: StoryObj = {
   render: (args) => (
-    <Box sx={{ "& button": { m: 1 } }}>
+    <Box>
       <div>
         <Button size="small" {...args}>
           Small
@@ -94,13 +101,13 @@ export const Sizes: StoryObj = {
 
 export const WithIcons: StoryObj = {
   render: (args) => (
-    <Stack direction="row" spacing={2}>
+    <Grid direction="row" spacing={2}>
       <Button variant="outlined" startIcon={<DeleteIcon />} {...args}>
         Delete
       </Button>
       <Button variant="contained" endIcon={<SendIcon />} {...args}>
         Send
       </Button>
-    </Stack>
+    </Grid>
   ),
 };
