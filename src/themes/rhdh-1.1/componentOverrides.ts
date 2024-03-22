@@ -18,6 +18,7 @@ export const components = (
 ): UnifiedThemeOptions['components'] => {
   const themePalette = defaultThemePalette(mode);
   return {
+    // @ts-expect-error: ignore this invalid type from RHDH 1.1 theme
     BackstageHeaderTabs: {
       styleOverrides: {
         tabsWrapper: {

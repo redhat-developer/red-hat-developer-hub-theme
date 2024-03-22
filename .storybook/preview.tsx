@@ -27,7 +27,7 @@ import {
   patternfly4DarkThemeOptions,
   patternfly5LightThemeOptions,
   patternfly5DarkThemeOptions
-} from "../src/mui";
+} from "../src/themes";
 
 const configApi = new ConfigReader({});
 const alertApi = new AlertApiForwarder();
