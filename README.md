@@ -1,4 +1,4 @@
-# Red Hat Developer Hub Theme 🎨
+# WIP: Red Hat Developer Hub Theme 🎨
 
 This package contains the Backstage theme RHDH.
 
@@ -18,7 +18,7 @@ Summary: Wrap your application code into a `ThemeProvider` component:
 import React from 'react';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import { muiV4LightThemeOptions } from 'TODO';
+import { muiV4LightThemeOptions } from '@redhat-developer/red-hat-developer-hub-theme';
 
 const theme = createTheme(muiV4LightThemeOptions);
 
@@ -41,7 +41,7 @@ Summary: Wrap your application code into a `ThemeProvider` component:
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { muiV5LightThemeOptions } from 'TODO';
+import { muiV5LightThemeOptions } from '@redhat-developer/red-hat-developer-hub-theme';
 
 const theme = createTheme(muiV5LightThemeOptions);
 
@@ -70,7 +70,7 @@ import LightIcon from '@material-ui/icons/WbSunny';
 import DarkIcon from '@material-ui/icons/WbSunny'; ???
 
 // Exact API tbd...
-import { backstageDarkTheme, backstageLightTheme } from 'TODO';
+import { backstageDarkTheme, backstageLightTheme } from '@redhat-developer/red-hat-developer-hub-theme';
 
 const app = createApp({
   apis: ...,
@@ -108,7 +108,7 @@ const app = createApp({
 import React from 'react';
 import { createUnifiedTheme, UnifiedThemeProvider } from '@backstage/theme';
 
-import { TODO } from 'TODO';
+import { TODO } from '@redhat-developer/red-hat-developer-hub-theme';
 
 const theme = createUnifiedTheme(TODO);
 
