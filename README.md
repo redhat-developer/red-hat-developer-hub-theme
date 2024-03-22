@@ -1,17 +1,11 @@
-# 🎨 MUI-themes
+# Red Hat Developer Hub Theme 🎨
 
-This package contains some (simple?) themes for the
-[MUI Material UI](https://mui.com/material-ui/) component libray
-and a [Storybook](https://storybook.js.org/) to test them.
-
-🚧 We will move this package to another shared org (hopefully soon) 🚧
-
-# The examples below aren't tested yet!
+This package contains the Backstage theme RHDH.
 
 ## Install dependencies
 
 ```
-npm install @jerolimov/mui-themes
+npm install TODO
 ```
 
 ## Use a Material UI v4 theme provider
@@ -24,7 +18,7 @@ Summary: Wrap your application code into a `ThemeProvider` component:
 import React from 'react';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import { muiV4LightThemeOptions } from '@jerolimov/mui-themes';
+import { muiV4LightThemeOptions } from 'TODO';
 
 const theme = createTheme(muiV4LightThemeOptions);
 
@@ -47,7 +41,7 @@ Summary: Wrap your application code into a `ThemeProvider` component:
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { muiV5LightThemeOptions } from '@jerolimov/mui-themes';
+import { muiV5LightThemeOptions } from 'TODO';
 
 const theme = createTheme(muiV5LightThemeOptions);
 
@@ -76,7 +70,7 @@ import LightIcon from '@material-ui/icons/WbSunny';
 import DarkIcon from '@material-ui/icons/WbSunny'; ???
 
 // Exact API tbd...
-import { backstageDarkTheme, backstageLightTheme } from '@jerolimov/mui-themes';
+import { backstageDarkTheme, backstageLightTheme } from 'TODO';
 
 const app = createApp({
   apis: ...,
@@ -114,7 +108,7 @@ const app = createApp({
 import React from 'react';
 import { createUnifiedTheme, UnifiedThemeProvider } from '@backstage/theme';
 
-import { TODO } from '@jerolimov/mui-themes';
+import { TODO } from 'TODO';
 
 const theme = createUnifiedTheme(TODO);
 
@@ -126,8 +120,3 @@ export default function App() {
   );
 }
 ```
-
-## RHDH
-
-* how to use this with dynamic plugins?
-* how to apply customizatons (overrides)
