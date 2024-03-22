@@ -12,3 +12,4 @@ export { themeOptions as patternfly5LightThemeOptions } from "./patternfly-5-lig
 
 export * as rhdh10 from "./rhdh-1.0";
 export * as rhdh11 from "./rhdh-1.1";
+export * as rhdh12 from "./rhdh-1.2";
