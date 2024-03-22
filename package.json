@@ -1,9 +1,15 @@
 {
-  "name": "@jerolimov/mui-themes",
-  "description": "MUI Material UI themes",
-  "version": "0.0.2",
-  "author": "Christoph Jerolimov",
-  "license": "MIT",
+  "name": "@redhat-developer/red-hat-developer-hub-theme",
+  "description": "Red Hat Developer Hub Theme",
+  "version": "0.0.4",
+  "author": "Red Hat",
+  "maintainers": [
+    {
+      "name": "Christoph Jerolimov",
+      "email": "jerolimov+git@redhat.com"
+    }
+  ],
+  "license": "Apache-2.0",
   "scripts": {
     "build": "tsc",
     "lint": "eslint src && prettier --check src",
