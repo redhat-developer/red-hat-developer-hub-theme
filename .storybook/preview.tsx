@@ -114,8 +114,10 @@ const preview: Preview = {
         'RHDH 1.0 Dark': themes.rhdh10.customDarkTheme(rhdhColors.dark),
         'RHDH 1.1 Light': themes.rhdh11.customLightTheme(rhdhColors.light),
         'RHDH 1.1 Dark': themes.rhdh11.customDarkTheme(rhdhColors.dark),
+        'RHDH 1.2 Light (under active development)': themes.rhdh12.customLightTheme(rhdhColors.light),
+        'RHDH 1.2 Dark (under active development)': themes.rhdh12.customDarkTheme(rhdhColors.dark),
       },
-      defaultTheme: "MUI Light", // TODO
+      defaultTheme: "RHDH 1.1 Dark",
       Provider: ThemeProvider,
       GlobalStyles: CssBaseline,
     }),
