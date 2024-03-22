@@ -1,9 +1,14 @@
-import type { ThemeOptions } from "@mui/material/styles";
+export { backstageDarkThemeOptions } from "./backstage-dark";
+export { backstageLightThemeOptions } from "./backstage-light";
 
-export { themeOptions as darkThemeOptions } from "./dark-theme";
-export { themeOptions as lightThemeOptions } from "./light-theme";
-export { options as helloweenThemeOptions } from "./helloween";
-export { themeOptions as patternfly4DarkThemeOptions } from "./patternfly-4-dark-theme";
-export { themeOptions as patternfly4LightThemeOptions } from "./patternfly-4-light-theme";
-export { themeOptions as patternfly5DarkThemeOptions } from "./patternfly-5-dark-theme";
-export { themeOptions as patternfly5LightThemeOptions } from "./patternfly-5-light-theme";
+export { themeOptions as muiDarkThemeOptions } from "./mui-dark";
+export { themeOptions as muiLightThemeOptions } from "./mui-light";
+export { options as muiHelloweenThemeOptions } from "./mui-helloween";
+
+export { themeOptions as patternfly4DarkThemeOptions } from "./patternfly-4-dark";
+export { themeOptions as patternfly4LightThemeOptions } from "./patternfly-4-light";
+export { themeOptions as patternfly5DarkThemeOptions } from "./patternfly-5-dark";
+export { themeOptions as patternfly5LightThemeOptions } from "./patternfly-5-light";
+
+export * as rhdh10 from "./rhdh-1.0";
+export * as rhdh11 from "./rhdh-1.1";
