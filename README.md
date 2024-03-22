@@ -1,11 +1,11 @@
-# WIP: Red Hat Developer Hub Theme 🎨
+# 🚧 WIP Red Hat Developer Hub Theme 🎨
 
 This package contains the Backstage theme RHDH.
 
 ## Install dependencies
 
 ```
-npm install TODO
+npm install @redhat-developer/red-hat-developer-hub-theme
 ```
 
 ## Use a Material UI v4 theme provider
