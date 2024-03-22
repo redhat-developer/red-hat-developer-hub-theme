@@ -21,8 +21,8 @@ jobs:
         run: npm run build
       - name: Publish to npm
         run: |
-          #latest_version=$(npm view @redhat-developer/red-hat-developer-hub-theme@latest version)
-          #npm version $latest_version --no-git-tag-version
+          latest_version=$(npm view @redhat-developer/red-hat-developer-hub-theme@latest version)
+          npm version $latest_version --no-git-tag-version
           npm version patch           --no-git-tag-version
           npm publish --access=public --tag=latest
         env:
