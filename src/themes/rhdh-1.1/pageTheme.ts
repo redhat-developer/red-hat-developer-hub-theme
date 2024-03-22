@@ -1,9 +1,9 @@
-import { PageTheme, genPageTheme, shapes } from '@backstage/theme';
-import { ThemeColors } from './types';
+import { PageTheme, genPageTheme, shapes } from "@backstage/theme";
+import { ThemeColors } from "./types";
 
 export const pageTheme = (input: ThemeColors): Record<string, PageTheme> => {
   const { headerColor1, headerColor2 } = input;
-  const defaultColors = ['#005f60', '#73c5c5'];
+  const defaultColors = ["#005f60", "#73c5c5"];
   const headerColor = [
     headerColor1 || defaultColors[0],
     headerColor2 || defaultColors[1],

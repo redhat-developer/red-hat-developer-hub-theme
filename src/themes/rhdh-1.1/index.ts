@@ -1,2 +1,2 @@
-export { customLightTheme } from './lightTheme';
-export { customDarkTheme } from './darkTheme';
+export { customLightTheme } from "./lightTheme";
+export { customDarkTheme } from "./darkTheme";

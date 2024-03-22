@@ -1,1 +1,1 @@
-export { darkTheme as backstageDarkThemeOptions } from '@backstage/theme';
+export { darkTheme as backstageDarkThemeOptions } from "@backstage/theme";

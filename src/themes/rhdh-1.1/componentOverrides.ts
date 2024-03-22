@@ -1,6 +1,6 @@
-import { UnifiedThemeOptions } from '@backstage/theme';
-import { defaultThemePalette } from './defaultThemePalette';
-import { ThemeColors } from './types';
+import { UnifiedThemeOptions } from "@backstage/theme";
+import { defaultThemePalette } from "./defaultThemePalette";
+import { ThemeColors } from "./types";
 
 const redhatFont = `@font-face {
   font-family: 'Red Hat Font';
@@ -15,20 +15,20 @@ const redhatFont = `@font-face {
 export const components = (
   themeColors: ThemeColors,
   mode: string,
-): UnifiedThemeOptions['components'] => {
+): UnifiedThemeOptions["components"] => {
   const themePalette = defaultThemePalette(mode);
   return {
     // @ts-expect-error: ignore this invalid type from RHDH 1.1 theme
     BackstageHeaderTabs: {
       styleOverrides: {
         tabsWrapper: {
-          paddingLeft: '0',
+          paddingLeft: "0",
         },
         defaultTab: {
-          textTransform: 'none',
-          fontSize: '0.875rem',
-          '&:hover': {
-            boxShadow: '0 -3px #b8bbbe inset',
+          textTransform: "none",
+          fontSize: "0.875rem",
+          "&:hover": {
+            boxShadow: "0 -3px #b8bbbe inset",
           },
         },
       },
@@ -37,14 +37,14 @@ export const components = (
       defaultProps: {
         TabIndicatorProps: {
           style: {
-            height: '3px',
-            background: themeColors.navigationIndicatorColor || '#0066CC',
+            height: "3px",
+            background: themeColors.navigationIndicatorColor || "#0066CC",
           },
         },
       },
       styleOverrides: {
         root: {
-          borderBottom: '1px solid #d2d2d2',
+          borderBottom: "1px solid #d2d2d2",
         },
       },
     },
@@ -54,10 +54,10 @@ export const components = (
       },
       styleOverrides: {
         root: {
-          textTransform: 'none',
-          minWidth: 'initial !important',
-          '&.Mui-disabled': {
-            backgroundColor: '#d2d2d2',
+          textTransform: "none",
+          minWidth: "initial !important",
+          "&.Mui-disabled": {
+            backgroundColor: "#d2d2d2",
           },
         },
       },
@@ -68,34 +68,34 @@ export const components = (
       },
       styleOverrides: {
         root: {
-          textTransform: 'none',
-          border: '0',
-          borderRadius: '3px',
+          textTransform: "none",
+          border: "0",
+          borderRadius: "3px",
         },
         contained: {
-          boxShadow: 'none',
-          '&:hover': {
-            border: '0',
-            boxShadow: 'none',
+          boxShadow: "none",
+          "&:hover": {
+            border: "0",
+            boxShadow: "none",
           },
-          '&:-webkit-any-link:focus-visible': {
-            outlineOffset: '0',
+          "&:-webkit-any-link:focus-visible": {
+            outlineOffset: "0",
           },
         },
         containedPrimary: {
           backgroundColor: themePalette.primary.containedButtonBackground,
           color: themePalette.primary.contrastText,
-          '&:hover': {
+          "&:hover": {
             backgroundColor: themePalette.primary.dark,
             color: themePalette.primary.contrastText,
           },
-          '&:focus-visible': {
+          "&:focus-visible": {
             boxShadow: `inset 0 0 0 1px ${themePalette.primary.focusVisibleBorder}`,
             outline: `${themePalette.primary.focusVisibleBorder} solid 1px`,
             backgroundColor: themePalette.primary.dark,
             color: themePalette.primary.contrastText,
           },
-          '&:disabled': {
+          "&:disabled": {
             color: themePalette.primary.disabled,
             backgroundColor: themePalette.primary.disabledBackground,
           },
@@ -103,30 +103,30 @@ export const components = (
         containedSecondary: {
           backgroundColor: themePalette.secondary.containedButtonBackground,
           color: themePalette.secondary.contrastText,
-          '&:hover': {
+          "&:hover": {
             backgroundColor: themePalette.secondary.dark,
             color: themePalette.secondary.contrastText,
           },
-          '&:focus-visible': {
+          "&:focus-visible": {
             boxShadow: `inset 0 0 0 1px ${themePalette.secondary.focusVisibleBorder}`,
             outline: `${themePalette.secondary.focusVisibleBorder} solid 1px`,
             backgroundColor: themePalette.secondary.dark,
             color: themePalette.secondary.contrastText,
           },
-          '&:disabled': {
+          "&:disabled": {
             color: themePalette.secondary.disabled,
             backgroundColor: themePalette.secondary.disabledBackground,
           },
         },
         outlined: {
-          border: '0',
+          border: "0",
           boxShadow: `inset 0 0 0 1px ${themePalette.primary.main}`,
-          '&:hover': {
-            border: '0',
+          "&:hover": {
+            border: "0",
             boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-          '&:focus-visible': {
+          "&:focus-visible": {
             boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
             outline: `${themePalette.primary.focusVisibleBorder} solid 1px`,
           },
@@ -134,13 +134,13 @@ export const components = (
         outlinedPrimary: {
           color: themePalette.primary.main,
           boxShadow: `inset 0 0 0 1px ${themePalette.primary.main}`,
-          border: '0',
-          '&:hover': {
-            border: '0',
+          border: "0",
+          "&:hover": {
+            border: "0",
             boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-          '&:focus-visible': {
+          "&:focus-visible": {
             boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
             outline: `${themePalette.primary.focusVisibleBorder} solid 1px`,
           },
@@ -148,40 +148,40 @@ export const components = (
         outlinedSecondary: {
           color: themePalette.secondary.main,
           boxShadow: `inset 0 0 0 1px ${themePalette.secondary.main}`,
-          border: '0',
-          '&:hover': {
-            border: '0',
+          border: "0",
+          "&:hover": {
+            border: "0",
             boxShadow: `inset 0 0 0 2px ${themePalette.secondary.main}`,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-          '&:focus-visible': {
+          "&:focus-visible": {
             boxShadow: `inset 0 0 0 2px ${themePalette.secondary.main}`,
             outline: `${themePalette.secondary.focusVisibleBorder} solid 1px`,
           },
         },
         text: {
           color: themePalette.primary.main,
-          '&:hover': {
+          "&:hover": {
             color: themePalette.primary.textHover,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-          '&:focus-visible': {
+          "&:focus-visible": {
             boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
             outline: `${themePalette.primary.focusVisibleBorder} solid 1px`,
           },
         },
         textPrimary: {
           color: themePalette.primary.main,
-          '&:hover': {
+          "&:hover": {
             color: themePalette.primary.textHover,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
         },
         textSecondary: {
           color: themePalette.secondary.main,
-          '&:hover': {
+          "&:hover": {
             color: themePalette.secondary.textHover,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
         },
       },
@@ -189,8 +189,8 @@ export const components = (
     MuiLink: {
       styleOverrides: {
         underlineHover: {
-          '&:hover': {
-            textDecoration: 'none',
+          "&:hover": {
+            textDecoration: "none",
           },
         },
       },

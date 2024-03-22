@@ -1,1 +1,1 @@
-export { lightTheme as backstageLightThemeOptions } from '@backstage/theme';
+export { lightTheme as backstageLightThemeOptions } from "@backstage/theme";

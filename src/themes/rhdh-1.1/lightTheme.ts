@@ -1,33 +1,33 @@
-import { createUnifiedTheme, themes } from '@backstage/theme';
-import { components } from './componentOverrides';
-import { pageTheme } from './pageTheme';
-import { ThemeColors } from './types';
+import { createUnifiedTheme, themes } from "@backstage/theme";
+import { components } from "./componentOverrides";
+import { pageTheme } from "./pageTheme";
+import { ThemeColors } from "./types";
 
 export const customLightTheme = (themeColors: ThemeColors) =>
   createUnifiedTheme({
     palette: {
-      ...themes.light.getTheme('v5')?.palette,
+      ...themes.light.getTheme("v5")?.palette,
       ...(themeColors.primaryColor && {
         primary: {
-          ...themes.light.getTheme('v5')?.palette.primary,
+          ...themes.light.getTheme("v5")?.palette.primary,
           main: themeColors.primaryColor,
         },
       }),
       navigation: {
-        background: '#222427',
-        indicator: themeColors.navigationIndicatorColor || '#0066CC',
-        color: '#ffffff',
-        selectedColor: '#ffffff',
+        background: "#222427",
+        indicator: themeColors.navigationIndicatorColor || "#0066CC",
+        color: "#ffffff",
+        selectedColor: "#ffffff",
         navItem: {
-          hoverBackground: '#3c3f42',
+          hoverBackground: "#3c3f42",
         },
       },
       text: {
-        primary: '#151515',
-        secondary: '#757575',
+        primary: "#151515",
+        secondary: "#757575",
       },
     },
-    defaultPageTheme: 'home',
+    defaultPageTheme: "home",
     pageTheme: pageTheme(themeColors),
-    components: components(themeColors, 'light'),
+    components: components(themeColors, "light"),
   });

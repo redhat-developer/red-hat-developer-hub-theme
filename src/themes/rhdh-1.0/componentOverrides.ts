@@ -1,4 +1,4 @@
-import { UnifiedThemeOptions } from '@backstage/theme';
+import { UnifiedThemeOptions } from "@backstage/theme";
 
 const redhatFont = `@font-face {
   font-family: 'Red Hat Font';
@@ -10,7 +10,7 @@ const redhatFont = `@font-face {
     url(/fonts/RedHatText-Regular.ttf) format('truetype');
 }`;
 
-export const components: UnifiedThemeOptions['components'] = {
+export const components: UnifiedThemeOptions["components"] = {
   MuiCssBaseline: {
     styleOverrides: redhatFont,
   },
