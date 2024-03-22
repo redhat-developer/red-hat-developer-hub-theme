@@ -3,8 +3,10 @@ import type { Preview, ReactRenderer } from "@storybook/react";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 
 import { configApiRef, errorApiRef } from '@backstage/core-plugin-api';
+import { translationApiRef, TranslationApi } from '@backstage/core-plugin-api/alpha';
 import { ConfigReader, AlertApiForwarder, ErrorAlerter, ErrorApiForwarder } from '@backstage/core-app-api';
 import { TestApiProvider } from '@backstage/test-utils';
+import { MockTranslationApi } from '@backstage/test-utils/alpha';
 
 import {
   createTheme as createV4Theme,
@@ -23,10 +25,12 @@ import * as themes from "../src/themes";
 const configApi = new ConfigReader({});
 const alertApi = new AlertApiForwarder();
 const errorApi = new ErrorAlerter(alertApi, new ErrorApiForwarder());
+const translationApi: TranslationApi = MockTranslationApi.create();
 
 export const apis = [
   [configApiRef, configApi],
   [errorApiRef, errorApi],
+  [translationApiRef, translationApi],
 ] as const;
 
 const ThemeProvider = ({ theme, children }) => {
