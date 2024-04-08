@@ -98,20 +98,23 @@ export const useAllThemes = () => {
 };
 
 export const useThemes = () => {
-  return React.useMemo(() => [
-    {
-      id: "light",
-      title: "Light",
-      variant: "light",
-      icon: <LightIcon />,
-      Provider: createProvider(rhdh12.customLightTheme({})),
-    },
-    {
-      id: "dark",
-      title: "Dark",
-      variant: "dark",
-      icon: <DarkIcon />,
-      Provider: createProvider(rhdh12.customDarkTheme({})),
-    },
-  ], []);
+  return React.useMemo(
+    () => [
+      {
+        id: "light",
+        title: "Light",
+        variant: "light",
+        icon: <LightIcon />,
+        Provider: createProvider(rhdh12.customLightTheme({})),
+      },
+      {
+        id: "dark",
+        title: "Dark",
+        variant: "dark",
+        icon: <DarkIcon />,
+        Provider: createProvider(rhdh12.customDarkTheme({})),
+      },
+    ],
+    [],
+  );
 };
