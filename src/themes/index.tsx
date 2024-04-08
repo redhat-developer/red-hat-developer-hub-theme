@@ -32,7 +32,7 @@ const createProvider =
     );
   };
 
-export const createDevAppThemes = () => {
+export const createDevAppThemes = (): AppTheme[] => {
   return [
     {
       id: "backstage-light",
@@ -93,11 +93,11 @@ export const createDevAppThemes = () => {
   ];
 };
 
-export const useAllThemes = () => {
+export const useAllThemes = (): AppTheme[] => {
   return React.useMemo(() => createDevAppThemes(), []);
 };
 
-export const useThemes = () => {
+export const useThemes = (): AppTheme[] => {
   return React.useMemo(
     () => [
       {
