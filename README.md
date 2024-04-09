@@ -108,6 +108,22 @@ On older RHDH instances you can install it:
      .render();
    ```
 
+## Use `yarn link`
+
+1. Clone the rhdh theme and run `npm link` in it:
+
+   ```shell
+   cd red-hat-developer-hub-theme
+   yarn link
+   ```
+
+2. To use this link you can cd any other repository:
+
+   ```shell
+   cd ../backstage-plugins
+   yarn link @redhat-developer/red-hat-developer-hub-theme
+   ```
+
 ## Links
 
 * PatternFly
