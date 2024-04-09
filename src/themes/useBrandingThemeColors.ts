@@ -8,7 +8,7 @@ export type ThemeColors = {
   navigationIndicatorColor?: string;
 };
 
-export const useThemeColors = (themeName: string): ThemeColors => {
+export const useBrandingThemeColors = (themeName: string): ThemeColors => {
   const configApi = useApi(configApiRef);
   return React.useMemo(() => {
     const themeColors: ThemeColors = {};

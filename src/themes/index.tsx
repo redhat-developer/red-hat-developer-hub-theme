@@ -8,11 +8,24 @@ import { createTheme } from "@mui/material/styles";
 import * as rhdh10 from "./rhdh-1.0";
 import * as rhdh11 from "./rhdh-1.1";
 import * as rhdh12 from "./rhdh-1.2";
-import { useThemeColors } from "./useThemeColors";
+import { ThemeColors, useBrandingThemeColors } from "./useBrandingThemeColors";
 
 const createProvider =
   (theme: UnifiedTheme): AppTheme["Provider"] =>
   ({ children }) => {
+    return (
+      <UnifiedThemeProvider theme={theme}>{children}</UnifiedThemeProvider>
+    );
+  };
+
+const createLazyProvider =
+  (
+    brandingThemeName: string,
+    themeFactory: (themeColors: ThemeColors) => UnifiedTheme,
+  ): AppTheme["Provider"] =>
+  ({ children }) => {
+    const themeColors = useBrandingThemeColors(brandingThemeName);
+    const theme = React.useMemo(() => themeFactory(themeColors), [themeColors]);
     return (
       <UnifiedThemeProvider theme={theme}>{children}</UnifiedThemeProvider>
     );
@@ -84,16 +97,6 @@ export const useAllThemes = (): AppTheme[] => {
 };
 
 export const useThemes = (): AppTheme[] => {
-  const lightThemeColors = useThemeColors("light");
-  const lightTheme = React.useMemo(
-    () => rhdh12.customLightTheme(lightThemeColors),
-    [lightThemeColors],
-  );
-  const darkThemeColors = useThemeColors("dark");
-  const darkTheme = React.useMemo(
-    () => rhdh12.customLightTheme(darkThemeColors),
-    [darkThemeColors],
-  );
   return React.useMemo(
     () => [
       {
@@ -101,14 +104,14 @@ export const useThemes = (): AppTheme[] => {
         title: "Light",
         variant: "light",
         icon: <LightIcon />,
-        Provider: createProvider(lightTheme),
+        Provider: createLazyProvider("light", rhdh12.customLightTheme),
       },
       {
         id: "dark",
         title: "Dark",
         variant: "dark",
         icon: <DarkIcon />,
-        Provider: createProvider(darkTheme),
+        Provider: createLazyProvider("dark", rhdh12.customDarkTheme),
       },
     ],
     [],
