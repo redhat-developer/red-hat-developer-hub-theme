@@ -3,6 +3,7 @@ import { AppTheme } from "@backstage/core-plugin-api";
 import { UnifiedTheme, UnifiedThemeProvider, themes } from "@backstage/theme";
 import LightIcon from "@mui/icons-material/WbSunny";
 import DarkIcon from "@mui/icons-material/Brightness2";
+import { createTheme } from "@mui/material/styles";
 
 import * as rhdh10 from "./rhdh-1.0";
 import * as rhdh11 from "./rhdh-1.1";
@@ -112,4 +113,16 @@ export const useThemes = (): AppTheme[] => {
     ],
     [],
   );
+};
+
+export const useLoaderTheme = () => {
+  return React.useMemo(() => {
+    const latestTheme = localStorage.getItem("theme");
+    const unifiedTheme =
+      latestTheme !== "dark"
+        ? rhdh12.customLightTheme({})
+        : rhdh12.customDarkTheme({});
+    const palette = unifiedTheme.getTheme("v5")?.palette;
+    return createTheme({ palette });
+  }, []);
 };
