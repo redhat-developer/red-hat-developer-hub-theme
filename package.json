@@ -14,6 +14,8 @@
     "build": "tsc",
     "lint": "eslint src && prettier --check src",
     "fix": "prettier --write src",
+    "test": "CI=1 backstage-cli package test --testEnvironment jsdom --colors",
+    "test:watch": "backstage-cli package test --testEnvironment jsdom",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "changeset": "changeset"
@@ -26,6 +28,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
+    "@backstage/cli": "^0.26.2",
     "@backstage/core-plugin-api": "^1.9.1",
     "@backstage/plugin-azure-devops-common": "^0.3.2",
     "@backstage/plugin-catalog-react": "^1.11.0",
@@ -52,6 +55,7 @@
     "@storybook/react": "^8.0.4",
     "@storybook/react-webpack5": "^8.0.4",
     "@storybook/test": "^8.0.4",
+    "@testing-library/react-hooks": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "eslint": "^8.55.0",
