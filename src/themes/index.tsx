@@ -1,28 +1,13 @@
 import React from "react";
 import { AppTheme } from "@backstage/core-plugin-api";
 import { UnifiedTheme, UnifiedThemeProvider, themes } from "@backstage/theme";
-import LightIcon from "@material-ui/icons/WbSunny";
-import DarkIcon from "@material-ui/icons/WbSunny";
+import LightIcon from "@mui/icons-material/WbSunny";
+import DarkIcon from "@mui/icons-material/Brightness2";
 
 import * as rhdh10 from "./rhdh-1.0";
 import * as rhdh11 from "./rhdh-1.1";
 import * as rhdh12 from "./rhdh-1.2";
-
-export { backstageDarkThemeOptions } from "./backstage-dark";
-export { backstageLightThemeOptions } from "./backstage-light";
-
-export { themeOptions as muiDarkThemeOptions } from "./mui-dark";
-export { themeOptions as muiLightThemeOptions } from "./mui-light";
-export { options as muiHelloweenThemeOptions } from "./mui-helloween";
-
-export { themeOptions as patternfly4DarkThemeOptions } from "./patternfly-4-dark";
-export { themeOptions as patternfly4LightThemeOptions } from "./patternfly-4-light";
-export { themeOptions as patternfly5DarkThemeOptions } from "./patternfly-5-dark";
-export { themeOptions as patternfly5LightThemeOptions } from "./patternfly-5-light";
-
-export * as rhdh10 from "./rhdh-1.0";
-export * as rhdh11 from "./rhdh-1.1";
-export * as rhdh12 from "./rhdh-1.2";
+import { useThemeColors } from "./useThemeColors";
 
 const createProvider =
   (theme: UnifiedTheme): AppTheme["Provider"] =>
@@ -98,6 +83,16 @@ export const useAllThemes = (): AppTheme[] => {
 };
 
 export const useThemes = (): AppTheme[] => {
+  const lightThemeColors = useThemeColors("light");
+  const lightTheme = React.useMemo(
+    () => rhdh12.customLightTheme(lightThemeColors),
+    [lightThemeColors],
+  );
+  const darkThemeColors = useThemeColors("dark");
+  const darkTheme = React.useMemo(
+    () => rhdh12.customLightTheme(darkThemeColors),
+    [darkThemeColors],
+  );
   return React.useMemo(
     () => [
       {
@@ -105,14 +100,14 @@ export const useThemes = (): AppTheme[] => {
         title: "Light",
         variant: "light",
         icon: <LightIcon />,
-        Provider: createProvider(rhdh12.customLightTheme({})),
+        Provider: createProvider(lightTheme),
       },
       {
         id: "dark",
         title: "Dark",
         variant: "dark",
         icon: <DarkIcon />,
-        Provider: createProvider(rhdh12.customDarkTheme({})),
+        Provider: createProvider(darkTheme),
       },
     ],
     [],
