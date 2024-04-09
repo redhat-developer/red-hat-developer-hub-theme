@@ -7,7 +7,7 @@ import { createTheme } from "@mui/material/styles";
 
 import * as rhdh10 from "./rhdh-1.0";
 import * as rhdh11 from "./rhdh-1.1";
-import * as rhdh12 from "./rhdh";
+import * as rhdh from "./rhdh";
 import {
   BrandingThemeColors,
   useBrandingThemeColors,
@@ -86,18 +86,18 @@ export const createDevAppThemes = (): AppTheme[] => {
       Provider: createProvider(rhdh11.customDarkTheme({})),
     },
     {
-      id: "rhdh-1.2-light",
-      title: "RHDH 1.2 Light",
+      id: "rhdh-latest-light",
+      title: "RHDH Light (latest)",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createProvider(rhdh12.customLightTheme({})),
+      Provider: createProvider(rhdh.customLightTheme({})),
     },
     {
-      id: "rhdh-1.2-dark",
-      title: "RHDH 1.2 Dark",
+      id: "rhdh-latest-dark",
+      title: "RHDH Dark (Latest)",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createProvider(rhdh12.customDarkTheme({})),
+      Provider: createProvider(rhdh.customDarkTheme({})),
     },
   ];
 };
@@ -113,17 +113,17 @@ export const getThemes = (): AppTheme[] => {
       title: "Light",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createBrandedProvider("light", rhdh12.customLightTheme),
+      Provider: createBrandedProvider("light", rhdh.customLightTheme),
     },
     {
       id: "dark",
       title: "Dark",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createBrandedProvider("dark", rhdh12.customDarkTheme),
+      Provider: createBrandedProvider("dark", rhdh.customDarkTheme),
     },
   ];
-}
+};
 
 export const useThemes = (): AppTheme[] => {
   return React.useMemo(() => getThemes(), []);
@@ -134,8 +134,8 @@ export const useLoaderTheme = () => {
     const latestTheme = localStorage.getItem("theme");
     const unifiedTheme =
       latestTheme !== "dark"
-        ? rhdh12.customLightTheme({})
-        : rhdh12.customDarkTheme({});
+        ? rhdh.customLightTheme({})
+        : rhdh.customDarkTheme({});
     const palette = unifiedTheme.getTheme("v5")?.palette;
     return createTheme({ palette });
   }, []);
