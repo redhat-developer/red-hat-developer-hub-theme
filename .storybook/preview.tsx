@@ -20,7 +20,14 @@ import {
   CssBaseline,
 } from "@mui/material";
 
-import * as themes from "../src/themes";
+import * as muiLight from "../src/themes/mui-light";
+import * as muiDark from "../src/themes/mui-dark";
+import * as muiHelloween from "../src/themes/mui-helloween";
+import * as backstageLight from "../src/themes/backstage-light";
+import * as backstageDark from "../src/themes/backstage-dark";
+import * as rhdh10 from "../src/themes/rhdh-1.0";
+import * as rhdh11 from "../src/themes/rhdh-1.1";
+import * as rhdh from "../src/themes/rhdh";
 
 const configApi = new ConfigReader({});
 const alertApi = new AlertApiForwarder();
@@ -102,24 +109,24 @@ const preview: Preview = {
   decorators: [
     withThemeFromJSXProvider<ReactRenderer>({
       themes: {
-        'MUI Light': themes.muiLightThemeOptions,
-        'MUI Dark': themes.muiDarkThemeOptions,
-        'MUI Helloween': themes.muiHelloweenThemeOptions,
+        'MUI Light': muiLight.themeOptions,
+        'MUI Dark': muiDark.themeOptions,
+        'MUI Helloween': muiHelloween.options,
 
-        'Backstage Light': themes.backstageLightThemeOptions,
-        'Backstage Dark': themes.backstageDarkThemeOptions,
+        'Backstage Light': backstageLight.backstageLightThemeOptions,
+        'Backstage Dark': backstageDark.backstageDarkThemeOptions,
 
-        // 'Patternfly 4 Light': themes.patternfly4LightThemeOptions,
-        // 'Patternfly 4 Dark': themes.patternfly4DarkThemeOptions,
-        'Patternfly 5 Light': themes.patternfly5LightThemeOptions,
-        'Patternfly 5 Dark': themes.patternfly5DarkThemeOptions,
+        // 'Patternfly 4 Light': patternfly4LightThemeOptions,
+        // 'Patternfly 4 Dark': patternfly4DarkThemeOptions,
+        // 'Patternfly 5 Light': patternfly5LightThemeOptions,
+        // 'Patternfly 5 Dark': patternfly5DarkThemeOptions,
 
-        'RHDH 1.0 Light': themes.rhdh10.customLightTheme(rhdhColors.light),
-        'RHDH 1.0 Dark': themes.rhdh10.customDarkTheme(rhdhColors.dark),
-        'RHDH 1.1 Light': themes.rhdh11.customLightTheme(rhdhColors.light),
-        'RHDH 1.1 Dark': themes.rhdh11.customDarkTheme(rhdhColors.dark),
-        'RHDH 1.2 Light (under active development)': themes.rhdh12.customLightTheme(rhdhColors.light),
-        'RHDH 1.2 Dark (under active development)': themes.rhdh12.customDarkTheme(rhdhColors.dark),
+        'RHDH 1.0 Light': rhdh10.customLightTheme(rhdhColors.light),
+        'RHDH 1.0 Dark': rhdh10.customDarkTheme(rhdhColors.dark),
+        'RHDH 1.1 Light': rhdh11.customLightTheme(rhdhColors.light),
+        'RHDH 1.1 Dark': rhdh11.customDarkTheme(rhdhColors.dark),
+        'RHDH Light (latest)': rhdh.customLightTheme(rhdhColors.light),
+        'RHDH Dark (latest)': rhdh.customDarkTheme(rhdhColors.dark),
       },
       defaultTheme: "RHDH 1.1 Dark",
       Provider: ThemeProvider,

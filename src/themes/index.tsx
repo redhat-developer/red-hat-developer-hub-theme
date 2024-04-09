@@ -7,7 +7,7 @@ import { createTheme } from "@mui/material/styles";
 
 import * as rhdh10 from "./rhdh-1.0";
 import * as rhdh11 from "./rhdh-1.1";
-import * as rhdh12 from "./rhdh-1.2";
+import * as rhdh12 from "./rhdh";
 import {
   BrandingThemeColors,
   useBrandingThemeColors,
