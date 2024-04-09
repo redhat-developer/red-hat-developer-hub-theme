@@ -106,26 +106,27 @@ export const useAllThemes = (): AppTheme[] => {
   return React.useMemo(() => createDevAppThemes(), []);
 };
 
+export const getThemes = (): AppTheme[] => {
+  return [
+    {
+      id: "light",
+      title: "Light",
+      variant: "light",
+      icon: <LightIcon />,
+      Provider: createBrandedProvider("light", rhdh12.customLightTheme),
+    },
+    {
+      id: "dark",
+      title: "Dark",
+      variant: "dark",
+      icon: <DarkIcon />,
+      Provider: createBrandedProvider("dark", rhdh12.customDarkTheme),
+    },
+  ];
+}
+
 export const useThemes = (): AppTheme[] => {
-  return React.useMemo(
-    () => [
-      {
-        id: "light",
-        title: "Light",
-        variant: "light",
-        icon: <LightIcon />,
-        Provider: createBrandedProvider("light", rhdh12.customLightTheme),
-      },
-      {
-        id: "dark",
-        title: "Dark",
-        variant: "dark",
-        icon: <DarkIcon />,
-        Provider: createBrandedProvider("dark", rhdh12.customDarkTheme),
-      },
-    ],
-    [],
-  );
+  return React.useMemo(() => getThemes(), []);
 };
 
 export const useLoaderTheme = () => {

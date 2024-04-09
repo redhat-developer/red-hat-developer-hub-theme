@@ -1,122 +1,136 @@
-# 🚧 WIP Red Hat Developer Hub Theme 🎨
+# Red Hat Developer Hub Theme 🎨
 
-This package contains the Backstage theme RHDH.
+**A theme for [RHDH](https://developers.redhat.com/rhdh);
+a set of theming options for [MUI Material UI](https://mui.com/material-ui/) and
+[Backstage](https://backstage.io/) that look more similar to [PatternFly](https://www.patternfly.org/).**
+
+It also includes a [Storybook](https://storybook.js.org/) for visual regression tests.
+
+## API
+
+Returns all testable themes (incl. the backstage default color scheme and older RHDH versions):
+
+* `createDevAppThemes: () => AppTheme[]`
+* `useAllThemes: () => AppTheme[]`
+
+Returns the latest, not released RHDH light and dark theme for your backstage/RHDH instance:
+
+* `getThemes: () => AppTheme[]`
+* `useThemes: () => AppTheme[]`
+* `useLoaderTheme: () => MUIv5.Theme`
 
 ## Install dependencies
 
-```
+```shell
 npm install @redhat-developer/red-hat-developer-hub-theme
 ```
 
-## Use a Material UI v4 theme provider
+or
 
-See: [Material UI v4 - Theming doc](https://v4.mui.com/customization/theming/)
-
-Summary: Wrap your application code into a `ThemeProvider` component:
-
-```tsx
-import React from 'react';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-
-import { muiV4LightThemeOptions } from '@redhat-developer/red-hat-developer-hub-theme';
-
-const theme = createTheme(muiV4LightThemeOptions);
-
-export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      {/* your app components or other providers */}
-    </ThemeProvider>
-  );
-}
+```shell
+yarn add @redhat-developer/red-hat-developer-hub-theme
 ```
 
-## Use a MUI v5 theme provider
+## Use it with RHDH app
 
-See: [MUI v5 - Theming doc](https://mui.com/material-ui/customization/theming/)
+Starting with 1.2 this library is shipped with your RHDH installation.
 
-Summary: Wrap your application code into a `ThemeProvider` component:
+On older RHDH instances you can install it:
 
-```tsx
-import React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+1. Install the dependency with
 
-import { muiV5LightThemeOptions } from '@redhat-developer/red-hat-developer-hub-theme';
+   ```shell
+   yarn workspace app add @redhat-developer/red-hat-developer-hub-theme
+   ```
 
-const theme = createTheme(muiV5LightThemeOptions);
+2. In `packages/app/src/components/DynamicRoot/DynamicRoot.tsx`
 
-export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      {/* your app components or other providers */}
-    </ThemeProvider>
-  );
-}
-```
+   ```tsx
+   import { useThemes } from '@redhat-developer/red-hat-developer-hub-theme';
 
-## Use the Backstage configuration
+   // ...
 
-See: [Backstage - Using your Custom Theme doc](https://backstage.io/docs/getting-started/app-custom-theme/#using-your-custom-theme)
+     const themes = useThemes();
 
-Tl;dr: Backstage uses MUI v5 `adaptTheme` feature to use a v5 theming object to create theming objects for Material UI v4 and MUI v5, also if the most Backstage components uses Material UI v4 components at the moment. This allow each plugin to migrate individual from v4 to v5.
+   // ... 
 
-Summary: In your `packages/app/src/App.tsx` add this new dependency:
+         app.current = createApp({
+           apis: [...staticApis, ...remoteApis],
+           // ... remove defaultThemes from here:
+           themes,
+           components: defaultAppComponents,
+         });
+   ```
 
-```tsx
-import { createApp } from '@backstage/app-defaults';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import LightIcon from '@material-ui/icons/WbSunny';
-import DarkIcon from '@material-ui/icons/WbSunny'; ???
+## Use it with any Backstage app
 
-// Exact API tbd...
-import { backstageDarkTheme, backstageLightTheme } from '@redhat-developer/red-hat-developer-hub-theme';
+1. Install the dependency with
 
-const app = createApp({
-  apis: ...,
-  plugins: ...,
-  themes: [
-    {
-      id: 'light-theme',
-      title: 'Light theme',
-      variant: 'light',
-      icon: <LightIcon />,
-      Provider: ({ children }) => (
-        <ThemeProvider theme={backstageLightTheme}>
-          <CssBaseline>{children}</CssBaseline>
-        </ThemeProvider>
-      ),
-    },
-    {
-      id: 'dark-theme',
-      title: 'Dark theme',
-      variant: 'dark',
-      icon: <DarkIcon />,
-      Provider: ({ children }) => (
-        <ThemeProvider theme={backstageDarkTheme}>
-          <CssBaseline>{children}</CssBaseline>
-        </ThemeProvider>
-      ),
-    },
-  ]
-})
-```
+   ```shell
+   yarn workspace app add @redhat-developer/red-hat-developer-hub-theme
+   ```
 
-## Or with the Backstage unitied theme provider (for example in test cases)
+2. Update `packages/app/src/App.tsx` and apply the themes to `createApp`:
 
-```tsx
-import React from 'react';
-import { createUnifiedTheme, UnifiedThemeProvider } from '@backstage/theme';
+   ```tsx
+   import { getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
 
-import { TODO } from '@redhat-developer/red-hat-developer-hub-theme';
+   // ...
 
-const theme = createUnifiedTheme(TODO);
+   const app = createApp({
+     apis,
+     // ...
+     themes: getThemes(),
+   ```
 
-export default function App() {
-  return (
-    <UnifiedThemeProvider theme={theme}>
-      {/* your app components or other providers */}
-    </UnifiedThemeProvider>
-  );
-}
-```
+## Use it while developing a plugin
+
+
+1. Install the dependency with
+
+   ```shell
+   yarn workspace <plugin-root or plugin-name> add @redhat-developer/red-hat-developer-hub-theme
+   ```
+
+2. Add to your `*/dev/index.tsx`:
+
+   ```tsx
+   import { createDevAppThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+
+   // ...
+
+   createDevApp()
+     .registerPlugin(...)
+     .addThemes(createDevAppThemes())
+     .addPage({
+       // ...
+     })
+     .render();
+   ```
+
+## Links
+
+* PatternFly
+  * Colors
+    * [PatternFly design foundation](https://www.patternfly.org/design-foundations/colors)
+    * [PatternFly v6 design foundation](https://staging-v6.patternfly.org/design-foundations/colors)
+    * [Red Hat Brand standards/colors](https://www.redhat.com/en/about/brand/standards/color)
+* Backstage
+  * [Getting started > App custom theme](https://backstage.io/docs/getting-started/app-custom-theme/)
+  * Implementation:
+    * [packages/theme/src/unified](https://github.com/backstage/backstage/tree/master/packages/theme/src/unified)
+    * [packages/theme/src/unified/types.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/types.ts)
+    * [packages/theme/src/v4/baseTheme.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/v4/baseTheme.ts)
+    * [packages/theme/src/unified/UnifiedTheme.tsx](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/UnifiedTheme.tsx)
+
+
+* MUI v4:
+  * [Theming](https://v4.mui.com/customization/theming/)
+  * [Palette](https://v4.mui.com/customization/palette/)
+* MUI v5
+  * [Theming](https://mui.com/material-ui/customization/theming/)
+  * [Theme components](https://mui.com/material-ui/customization/theme-components/)
+  * [Palette](https://mui.com/material-ui/customization/palette/)
+  * Implementation:
+    * [packages/mui-material/src/styles/adaptV4Theme.js](https://github.com/mui/material-ui/blob/master/packages/mui-material/src/styles/adaptV4Theme.js)
+
