@@ -1,8 +1,8 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-import MUIv4TextField from '@material-ui/core/TextField';
-import MUIv4Autocomplete from '@material-ui/lab/Autocomplete';
+import MUIv4TextField from "@material-ui/core/TextField";
+import MUIv4Autocomplete from "@material-ui/lab/Autocomplete";
 
 import MUIv5TextField from "@mui/material/TextField";
 import MUIv5Autocomplete from "@mui/material/Autocomplete";
@@ -22,7 +22,9 @@ export const BrokenInDarkMode: StoryObj = {
             disablePortal
             options={top100Films}
             getOptionLabel={(option) => option.label}
-            renderInput={(params) => <MUIv4TextField {...params} label="Movie" />}
+            renderInput={(params) => (
+              <MUIv4TextField {...params} label="Movie" />
+            )}
             style={{ width: 300 }}
           />
         </Grid>
@@ -30,7 +32,9 @@ export const BrokenInDarkMode: StoryObj = {
           <MUIv5Autocomplete
             disablePortal
             options={top100Films}
-            renderInput={(params) => <MUIv5TextField {...params} label="Movie" />}
+            renderInput={(params) => (
+              <MUIv5TextField {...params} label="Movie" />
+            )}
             sx={{ width: 300 }}
           />
         </Grid>
