@@ -114,6 +114,10 @@ export const components = (
       styleOverrides: {
         root: {
           overflow: "scroll",
+          scrollbarWidth: "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
           backgroundColor: themePalette.general.mainSectionBackgroundColor,
         },
       },
