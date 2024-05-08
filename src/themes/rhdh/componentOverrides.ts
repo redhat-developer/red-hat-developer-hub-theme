@@ -202,16 +202,16 @@ export const components = (
     BackstageItemCardHeader: {
       styleOverrides: {
         root: {
-          '&[class*="makeStyles-header-"]': {
+          '&[class*="MuiBox-root-"]': {
             backgroundImage: "none",
             borderBottom: `1px solid ${themePalette.general.cardBorderColor}`,
           },
-          '& > h3[class*="MuiTypography-subtitle2-"] > div[class*="makeStyles-subtitleWrapper-"] > div:first-child':
+          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:first-child':
             {
               color: themePalette.general.tableSubtitleColor,
               textTransform: "capitalize",
             },
-          '& > h3[class*="MuiTypography-subtitle2-"] > div[class*="makeStyles-subtitleWrapper-"] > div:last-child':
+          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:last-child':
             {
               color: themePalette.general.cardSubtitleColor,
             },
