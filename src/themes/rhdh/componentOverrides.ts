@@ -206,15 +206,13 @@ export const components = (
             backgroundImage: "none",
             borderBottom: `1px solid ${themePalette.general.cardBorderColor}`,
           },
-          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:first-child':
-            {
-              color: themePalette.general.tableSubtitleColor,
-              textTransform: "capitalize",
-            },
-          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:last-child':
-            {
-              color: themePalette.general.cardSubtitleColor,
-            },
+          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:first-child': {
+            color: themePalette.general.tableSubtitleColor,
+            textTransform: "capitalize",
+          },
+          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:last-child': {
+            color: themePalette.general.cardSubtitleColor,
+          },
           '& > h4[class*="MuiTypography-h6-"]': {
             color: themePalette.general.cardSubtitleColor,
           },
