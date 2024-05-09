@@ -390,12 +390,12 @@ export const components = (
         root: {
           height: "100%",
           backgroundColor: themePalette.general.cardBackgroundColor,
-          '& > div > div > h2[class*="makeStyles-label"]': {
+          '& > div > div > h2[class*="MuiTypography-h2-"]': {
             textTransform: "unset",
             color: themePalette.general.cardSubtitleColor,
             opacity: "40%",
           },
-          '& > div > div > p[class*="makeStyles-value"]': {
+          '& > div > div > p[class*="MuiTypography-body2-"]': {
             fontWeight: "normal",
           },
           '& > div > div > div[class*="MuiChip-sizeSmall"]': {
@@ -409,7 +409,7 @@ export const components = (
           '& > div[class*="MuiAccordion-root"]:before': {
             height: 0,
           },
-          '& > div[class*="MuiGrid-root-"][class*="MuiGrid-container-"][class*="MuiGrid-spacing-xs-2-"] > div[class*="MuiGrid-root-"][class*="MuiGrid-item-"][class*="MuiGrid-grid-xs-12-"] > div[class*="MuiBox-root-"][class*="makeStyles-box"]':
+          '& > div[class*="MuiGrid-root-"][class*="MuiGrid-container-"][class*="MuiGrid-spacing-xs-2-"] > div[class*="MuiGrid-root-"][class*="MuiGrid-item-"][class*="MuiGrid-grid-xs-12-"] > div[class*="MuiBox-root-"]':
             {
               "-webkit-line-clamp": "2",
             },
