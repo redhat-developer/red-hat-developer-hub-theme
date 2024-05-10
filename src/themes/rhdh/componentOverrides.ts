@@ -332,9 +332,9 @@ export const components = (
             backgroundColor: themePalette.general.tableBackgroundColor,
           },
           // only child of td is an empty table row for separators, not an actual empty table cell
-          '& > td:not(:only-child):empty::before': {
+          "& > td:not(:only-child):empty::before": {
             content: '"--"',
-          }
+          },
         },
       },
     },
