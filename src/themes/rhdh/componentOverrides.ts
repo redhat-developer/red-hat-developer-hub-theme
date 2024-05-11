@@ -113,11 +113,6 @@ export const components = (
     BackstagePage: {
       styleOverrides: {
         root: {
-          overflow: "scroll",
-          scrollbarWidth: "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
           backgroundColor: themePalette.general.mainSectionBackgroundColor,
         },
       },
