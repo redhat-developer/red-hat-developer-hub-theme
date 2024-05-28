@@ -10,7 +10,7 @@ It also includes a [Storybook](https://storybook.js.org/) for visual regression 
 
 Returns all testable themes (incl. the backstage default color scheme and older RHDH versions):
 
-* `createDevAppThemes: () => AppTheme[]`
+* `getAllThemes: () => AppTheme[]`
 * `useAllThemes: () => AppTheme[]`
 
 Returns the latest, not released RHDH light and dark theme for your backstage/RHDH instance:
@@ -95,13 +95,13 @@ On older RHDH instances you can install it:
 2. Add to your `*/dev/index.tsx`:
 
    ```tsx
-   import { createDevAppThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+   import { getAllThemes } from '@redhat-developer/red-hat-developer-hub-theme';
 
    // ...
 
    createDevApp()
      .registerPlugin(...)
-     .addThemes(createDevAppThemes())
+     .addThemes(getAllThemes())
      .addPage({
        // ...
      })

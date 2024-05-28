@@ -41,7 +41,7 @@ const createBrandedProvider =
     );
   };
 
-export const createDevAppThemes = (): AppTheme[] => {
+export const getAllThemes = (): AppTheme[] => {
   return [
     {
       id: "backstage-light",
@@ -102,8 +102,11 @@ export const createDevAppThemes = (): AppTheme[] => {
   ];
 };
 
+/** @deprecated use getAllThemes instead */
+export const createDevAppThemes = getAllThemes;
+
 export const useAllThemes = (): AppTheme[] => {
-  return React.useMemo(() => createDevAppThemes(), []);
+  return React.useMemo(() => getAllThemes(), []);
 };
 
 export const getThemes = (): AppTheme[] => {
