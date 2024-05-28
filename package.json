@@ -24,6 +24,7 @@
   },
   "files": [
     "src/index.ts",
+    "src/fonts",
     "src/themes",
     "dist"
   ],

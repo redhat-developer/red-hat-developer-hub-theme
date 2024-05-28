@@ -2,13 +2,6 @@ import { UnifiedThemeOptions } from "@backstage/theme";
 import { defaultThemePalette } from "./defaultThemePalette";
 import { ThemeColors } from "./types";
 
-export const redHatFont = {
-  fontFamily: '"Red Hat Text", Helvetica, helvetica, arial, sans-serif',
-  src: `url(/fonts/RedHatText-Regular.woff2) format('woff2'),
-    url(/fonts/RedHatText-Regular.otf) format('opentype'),
-    url(/fonts/RedHatText-Regular.ttf) format('truetype')`,
-};
-
 export const components = (
   themeColors: ThemeColors,
   mode: string,
@@ -20,11 +13,6 @@ export const components = (
     //
 
     // MUI base
-    MuiCssBaseline: {
-      styleOverrides: {
-        "@font-face": [redHatFont],
-      },
-    },
     MuiTypography: {
       styleOverrides: {
         button: {

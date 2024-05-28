@@ -46,3 +46,9 @@
   font-style: italic;
   font-display: fallback;
 }
+
+pre,
+code {
+  font-family: "RedHatMono", "Liberation Mono", consolas, "SFMono-Regular",
+    menlo, monaco, "Courier New", monospace;
+}

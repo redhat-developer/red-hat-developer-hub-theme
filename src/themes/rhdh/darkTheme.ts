@@ -1,11 +1,13 @@
 import { createUnifiedTheme, themes } from "@backstage/theme";
-import { components, redHatFont } from "./componentOverrides";
+import { components } from "./componentOverrides";
 import { pageTheme } from "./pageTheme";
+import { fonts, typography } from "./typography";
 import { ThemeColors } from "./types";
 
 export const customDarkTheme = (themeColors: ThemeColors) =>
   createUnifiedTheme({
-    fontFamily: redHatFont.fontFamily,
+    fontFamily: fonts.text,
+    typography,
     palette: {
       ...themes.dark.getTheme("v5")?.palette,
       ...(themeColors.primaryColor && {
