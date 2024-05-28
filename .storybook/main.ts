@@ -18,6 +18,15 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
+  webpackFinal: async (config) => {
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@backstage/core-app-api': require.resolve('../mocks/@backstage/core-app-api.mock.tsx'),
+      };
+    }
+    return config;
+  },
   docs: {
     autodocs: "tag",
   },

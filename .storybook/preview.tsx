@@ -8,23 +8,8 @@ import { ConfigReader, AlertApiForwarder, ErrorAlerter, ErrorApiForwarder } from
 import { TestApiProvider } from '@backstage/test-utils';
 import { MockTranslationApi } from '@backstage/test-utils/alpha';
 
-import {
-  createTheme as createV4Theme,
-  ThemeProvider as MUIv4ThemeProvider,
-} from '@material-ui/core/styles';
+import { themes as backstageTheme, createUnifiedTheme, UnifiedThemeProvider } from '@backstage/theme';
 
-import {
-  ThemeProvider as MUIv5ThemeProvider,
-  // adaptV4Theme,
-  createTheme as createV5Theme,
-  CssBaseline,
-} from "@mui/material";
-
-import * as muiLight from "../src/themes/mui-light";
-import * as muiDark from "../src/themes/mui-dark";
-import * as muiHelloween from "../src/themes/mui-helloween";
-import * as backstageLight from "../src/themes/backstage-light";
-import * as backstageDark from "../src/themes/backstage-dark";
 import * as rhdh10 from "../src/themes/rhdh-1.0";
 import * as rhdh11 from "../src/themes/rhdh-1.1";
 import * as rhdh from "../src/themes/rhdh";
@@ -41,46 +26,13 @@ export const apis = [
 ] as const;
 
 const ThemeProvider = ({ theme, children }) => {
-  // console.log('ThemeProvider theme', theme);
-  let v4Theme, v5Theme;
-  if (theme.getTheme) {
-    v4Theme = theme.getTheme('v4');
-    v5Theme = theme.getTheme('v5');
-  } else {
-    v4Theme = createV4Theme(theme);
-    v5Theme = createV5Theme(theme);
-  }
-
-  let result = children;
-
-  // Add backstage API context
-  result = (
-    <TestApiProvider apis={apis}>
-      {result}
-    </TestApiProvider>
+  return (
+    <UnifiedThemeProvider theme={theme.getTheme ? theme : createUnifiedTheme(theme)}>
+      <TestApiProvider apis={apis}>
+        {children}
+      </TestApiProvider>
+    </UnifiedThemeProvider>
   );
-
-  // Add MUIv4 theme support
-  result = (
-    <MUIv4ThemeProvider theme={v4Theme}>
-      {result}
-    </MUIv4ThemeProvider>
-  );
-
-  // Add MUIv5 theme support
-  result = (
-    <MUIv5ThemeProvider theme={v5Theme}>
-      {result}
-    </MUIv5ThemeProvider>
-  );
-
-  // result = (
-  //   <UnifiedThemeProvider theme={createUnifiedTheme(theme)}>
-  //     {result}
-  //   </UnifiedThemeProvider>
-  // );
-
-  return result;
 }
 
 const rhdhColors = {
@@ -109,17 +61,8 @@ const preview: Preview = {
   decorators: [
     withThemeFromJSXProvider<ReactRenderer>({
       themes: {
-        'MUI Light': muiLight.themeOptions,
-        'MUI Dark': muiDark.themeOptions,
-        'MUI Helloween': muiHelloween.options,
-
-        'Backstage Light': backstageLight.backstageLightThemeOptions,
-        'Backstage Dark': backstageDark.backstageDarkThemeOptions,
-
-        // 'Patternfly 4 Light': patternfly4LightThemeOptions,
-        // 'Patternfly 4 Dark': patternfly4DarkThemeOptions,
-        // 'Patternfly 5 Light': patternfly5LightThemeOptions,
-        // 'Patternfly 5 Dark': patternfly5DarkThemeOptions,
+        'Backstage Light': backstageTheme.light,
+        'Backstage Dark': backstageTheme.dark,
 
         'RHDH 1.0 Light': rhdh10.customLightTheme(rhdhColors.light),
         'RHDH 1.0 Dark': rhdh10.customDarkTheme(rhdhColors.dark),
@@ -128,9 +71,8 @@ const preview: Preview = {
         'RHDH Light (latest)': rhdh.customLightTheme(rhdhColors.light),
         'RHDH Dark (latest)': rhdh.customDarkTheme(rhdhColors.dark),
       },
-      defaultTheme: "RHDH 1.1 Dark",
+      defaultTheme: "RHDH Light (latest)",
       Provider: ThemeProvider,
-      GlobalStyles: CssBaseline,
     }),
   ],
 };
