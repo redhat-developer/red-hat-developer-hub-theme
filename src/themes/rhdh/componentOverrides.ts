@@ -365,7 +365,6 @@ export const components = (
           },
         },
         body: {
-          fontWeight: "normal !important",
           color: themePalette.general.tableTitleColor,
           '& > div[class*="MuiChip-sizeSmall"]': {
             margin: "2px",
