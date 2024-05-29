@@ -369,7 +369,6 @@ export const components = (
           },
         },
         body: {
-          fontWeight: "normal !important",
           color: themePalette.general.tableTitleColor,
           // any other empty spans rather than the first one are for icons, not actual empty table cells
           "& > div > span:first-child:empty::before": {
