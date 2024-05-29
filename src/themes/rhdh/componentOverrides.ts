@@ -67,6 +67,8 @@ export const components = (
     },
 
     // MUI buttons
+    // Don't disableRipple for MuiButtonBase as it will affect all the buttons
+    // and we need to ensure that the buttons have a right touch and focus styling.
     MuiButton: {
       defaultProps: {
         disableRipple: true,
@@ -188,6 +190,13 @@ export const components = (
             color: themePalette.secondary.textHover,
             backgroundColor: "transparent",
           },
+        },
+      },
+    },
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
         },
       },
     },
