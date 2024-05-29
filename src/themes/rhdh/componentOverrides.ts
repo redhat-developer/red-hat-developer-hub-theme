@@ -259,6 +259,8 @@ export const components = (
     MuiCard: {
       styleOverrides: {
         root: {
+          display: "flex",
+          flexDirection: "column",
           backgroundColor: themePalette.general.cardBackgroundColor,
         },
       },
@@ -289,15 +291,12 @@ export const components = (
     MuiCardContent: {
       styleOverrides: {
         root: {
-          height: "100%",
+          flexGrow: "1",
           backgroundColor: themePalette.general.cardBackgroundColor,
           '& > div > div > h2[class*="MuiTypography-h2-"]': {
             textTransform: "unset",
             color: themePalette.general.cardSubtitleColor,
             opacity: "40%",
-          },
-          '& > div > div > p[class*="MuiTypography-body2-"]': {
-            fontWeight: "normal",
           },
           '& > div > div > div[class*="MuiChip-sizeSmall"]': {
             backgroundColor: "transparent",
@@ -495,10 +494,6 @@ export const components = (
               border: `1px solid ${themePalette.general.searchBarBorderColor}`,
               boxShadow: "none",
             },
-          },
-          '& > div[class*="-MuiGrid-root"]': {
-            marginLeft: "0",
-            width: "100%",
           },
         },
       },
