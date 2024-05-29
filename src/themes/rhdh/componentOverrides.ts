@@ -517,9 +517,11 @@ export const components = (
     BackstageHeader: {
       styleOverrides: {
         header: {
+          color: themePalette.general.headerTextColor,
           backgroundImage: `none, linear-gradient(90deg, ${themeColors.headerColor1}, ${themeColors.headerColor2})`,
           backgroundColor: themePalette.general.headerBackgroundColor,
           boxShadow: "none",
+          borderBottom: `1px solid ${themePalette.general.headerBottomBorderColor}`,
         },
         title: {
           color: themePalette.general.cardSubtitleColor,
@@ -562,7 +564,9 @@ export const components = (
       styleOverrides: {
         root: {
           '&[class*="MuiBox-root-"]': {
+            color: themePalette.general.headerTextColor,
             backgroundImage: "none",
+            // backgroundColor: themePalette.general.headerBackgroundColor,
             borderBottom: `1px solid ${themePalette.general.cardBorderColor}`,
           },
           '& > h3[class*="MuiTypography-subtitle2-"] > div > div:first-child': {
