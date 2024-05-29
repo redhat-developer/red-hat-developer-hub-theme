@@ -341,10 +341,6 @@ export const components = (
           '& > th[class*="MuiTableCell-head"]': {
             backgroundColor: themePalette.general.tableBackgroundColor,
           },
-          // only child of td is an empty table row for separators, not an actual empty table cell
-          "& > td:not(:only-child):empty::before": {
-            content: '"--"',
-          },
         },
       },
     },
@@ -371,10 +367,6 @@ export const components = (
         body: {
           fontWeight: "normal !important",
           color: themePalette.general.tableTitleColor,
-          // any other empty spans rather than the first one are for icons, not actual empty table cells
-          "& > div > span:first-child:empty::before": {
-            content: '"--"',
-          },
           '& > div[class*="MuiChip-sizeSmall"]': {
             margin: "2px",
           },
