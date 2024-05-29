@@ -6,13 +6,10 @@ const config: StorybookConfig = {
     "../backstage/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
-    "@storybook/addon-webpack5-compiler-swc",
-    "@chromatic-com/storybook"
+    "@storybook/addon-webpack5-compiler-swc"
   ],
   framework: {
     name: "@storybook/react-webpack5",
