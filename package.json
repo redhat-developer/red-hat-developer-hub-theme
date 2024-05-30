@@ -10,6 +10,7 @@
     }
   ],
   "license": "Apache-2.0",
+  "repository": "github:redhat-developer/red-hat-developer-hub-theme",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
