@@ -1,10 +1,10 @@
-# Red Hat Developer Hub Theme 🎨
+# [RHDH](https://developers.redhat.com/rhdh) / Red Hat Developer Hub Theme 🎨
 
-**A theme for [RHDH](https://developers.redhat.com/rhdh);
-a set of theming options for [MUI Material UI](https://mui.com/material-ui/) and
-[Backstage](https://backstage.io/) that look more similar to [PatternFly](https://www.patternfly.org/).**
+A set of theming options for [MUI Material UI](https://mui.com/material-ui/) and
+[Backstage](https://backstage.io/) that look more similar to [PatternFly](https://www.patternfly.org/).
 
-It also includes a [Storybook](https://storybook.js.org/) for visual regression tests.
+It also includes a [Storybook](https://storybook.js.org/) and
+a [Storybook test-runner](https://github.com/storybookjs/test-runner) for automatic visual regression tests.
 
 ## API
 
@@ -124,29 +124,23 @@ On older RHDH instances you can install it:
    yarn link @redhat-developer/red-hat-developer-hub-theme
    ```
 
-## Links
+## Additional links
 
-* PatternFly
-  * Colors
-    * [PatternFly design foundation](https://www.patternfly.org/design-foundations/colors)
-    * [PatternFly v6 design foundation](https://staging-v6.patternfly.org/design-foundations/colors)
-    * [Red Hat Brand standards/colors](https://www.redhat.com/en/about/brand/standards/color)
 * Backstage
   * [Getting started > App custom theme](https://backstage.io/docs/getting-started/app-custom-theme/)
-  * Implementation:
-    * [packages/theme/src/unified](https://github.com/backstage/backstage/tree/master/packages/theme/src/unified)
-    * [packages/theme/src/unified/types.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/types.ts)
-    * [packages/theme/src/v4/baseTheme.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/v4/baseTheme.ts)
-    * [packages/theme/src/unified/UnifiedTheme.tsx](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/UnifiedTheme.tsx)
-
-
+  * [packages/theme/src/unified](https://github.com/backstage/backstage/tree/master/packages/theme/src/unified)
+  * [packages/theme/src/unified/types.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/types.ts)
+  * [packages/theme/src/v4/baseTheme.ts](https://github.com/backstage/backstage/blob/master/packages/theme/src/v4/baseTheme.ts)
+  * [packages/theme/src/unified/UnifiedTheme.tsx](https://github.com/backstage/backstage/blob/master/packages/theme/src/unified/UnifiedTheme.tsx)
+* PatternFly
+  * [PatternFly design foundation](https://www.patternfly.org/design-foundations/colors)
+  * [PatternFly v6 design foundation](https://staging-v6.patternfly.org/design-foundations/colors)
+  * [Red Hat Brand standards/colors](https://www.redhat.com/en/about/brand/standards/color)
 * MUI v4:
   * [Theming](https://v4.mui.com/customization/theming/)
   * [Palette](https://v4.mui.com/customization/palette/)
 * MUI v5
   * [Theming](https://mui.com/material-ui/customization/theming/)
-  * [Theme components](https://mui.com/material-ui/customization/theme-components/)
   * [Palette](https://mui.com/material-ui/customization/palette/)
-  * Implementation:
-    * [packages/mui-material/src/styles/adaptV4Theme.js](https://github.com/mui/material-ui/blob/master/packages/mui-material/src/styles/adaptV4Theme.js)
-
+  * [Theme components](https://mui.com/material-ui/customization/theme-components/)
+  * [packages/mui-material/src/styles/adaptV4Theme.js](https://github.com/mui/material-ui/blob/master/packages/mui-material/src/styles/adaptV4Theme.js)

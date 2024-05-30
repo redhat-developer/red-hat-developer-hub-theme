@@ -9,7 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
-    "@storybook/addon-webpack5-compiler-swc"
+    "@storybook/addon-webpack5-compiler-swc",
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -19,7 +19,9 @@ const config: StorybookConfig = {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
-        '@backstage/core-app-api': require.resolve('../mocks/@backstage/core-app-api.mock.tsx'),
+        "@backstage/core-app-api": require.resolve(
+          "../mocks/@backstage/core-app-api.mock.tsx",
+        ),
       };
     }
     return config;

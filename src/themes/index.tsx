@@ -94,7 +94,7 @@ export const getAllThemes = (): AppTheme[] => {
     },
     {
       id: "rhdh-latest-dark",
-      title: "RHDH Dark (Latest)",
+      title: "RHDH Dark (latest)",
       variant: "dark",
       icon: <DarkIcon />,
       Provider: createProvider(rhdh.customDarkTheme({})),
