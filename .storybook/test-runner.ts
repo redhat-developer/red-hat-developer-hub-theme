@@ -46,8 +46,8 @@ const waitInMs: Record<string, number> = {
 
 const failureThreshold: Record<string, number> = {
   "plugins-examples--plugin-with-table": 100, // Unknown reason
-  "plugins-home-components-headerworldclock--default": 920, // Shows local tiem
-  "plugins-home-components-headerworldclock--twenty-four-hour-clocks": 920, // Shows local tiem
+  "plugins-home-components-headerworldclock--default": 4000, // Shows local time on the world clock
+  "plugins-home-components-headerworldclock--twenty-four-hour-clocks": 4000, // Shows local time on the world clock
   "plugins-home-components-visitedbytype--recently-default": 92, // Shows local tiem
   "plugins-home-components-visitedbytype--recently-few-items": 92, // Shows local tiem
   "plugins-home-components-visitedbytype--recently-more-items": 92, // Shows local tiem
