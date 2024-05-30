@@ -26,7 +26,7 @@ const skipInstableStories: Record<string, string> = {
   "feedback-emptystate--custom-image": "Animated image",
   "layout-item-cards--default": "Random lipsum text",
   "layout-item-cards--styling": "Random lipsum text",
-  'plugins-azure-devops-build-table--default': 'Random time',
+  "plugins-azure-devops-build-table--default": "Random time",
   "plugins-home-templates--customizable-template": "Random joke",
   "plugins-home-components-welcometitle--default": "Random page title",
   "plugins-home-components-welcometitle--with-language": "Random page title",
@@ -45,16 +45,12 @@ const waitInMs: Record<string, number> = {
 };
 
 const failureThreshold: Record<string, number> = {
-  // Screenshots are 1280x720 = 921600 pixels
-  // 0.01% of that is 92 pixels
-  'plugins-examples--plugin-with-table': 0.01, // Unknown reason
-  // 0.1% of that is 920 pixels
-  "plugins-home-components-headerworldclock--default": 0.1, // Shows local tiem
-  "plugins-home-components-headerworldclock--twenty-four-hour-clocks": 0.1, // Shows local tiem
-  // 0.01% of that is 92 pixels
-  "plugins-home-components-visitedbytype--recently-default": 0.01, // Shows local tiem
-  "plugins-home-components-visitedbytype--recently-few-items": 0.01, // Shows local tiem
-  "plugins-home-components-visitedbytype--recently-more-items": 0.01, // Shows local tiem
+  "plugins-examples--plugin-with-table": 100, // Unknown reason
+  "plugins-home-components-headerworldclock--default": 920, // Shows local tiem
+  "plugins-home-components-headerworldclock--twenty-four-hour-clocks": 920, // Shows local tiem
+  "plugins-home-components-visitedbytype--recently-default": 92, // Shows local tiem
+  "plugins-home-components-visitedbytype--recently-few-items": 92, // Shows local tiem
+  "plugins-home-components-visitedbytype--recently-more-items": 92, // Shows local tiem
 };
 
 const config: TestRunnerConfig = {
@@ -72,6 +68,8 @@ const config: TestRunnerConfig = {
       await page.evaluate(`window.changeTheme('${theme.title}'); null;`);
       await sleep(100);
 
+      // Alternative: Make a screenshot of just the rendered component with page.locator('#storybook-root').screenshot()
+      // I don't picked this up for now to see the 'theme context' on the screenshot...
       const image = await page.screenshot({
         animations: "disabled",
       });
@@ -83,7 +81,6 @@ const config: TestRunnerConfig = {
           threshold: 0.1,
         },
         failureThreshold: failureThreshold[context.id] ?? 0,
-        failureThresholdType: "percent",
       });
     }
   },
