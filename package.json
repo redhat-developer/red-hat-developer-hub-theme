@@ -1,6 +1,13 @@
 {
   "name": "@redhat-developer/red-hat-developer-hub-theme",
   "description": "Red Hat Developer Hub Theme",
+  "keywords": [
+    "backstage",
+    "rhdh",
+    "theme",
+    "redhat"
+  ],
+  "homepage": "https://developers.redhat.com/rhdh",
   "version": "0.0.4",
   "author": "Red Hat",
   "maintainers": [
