@@ -309,6 +309,11 @@ export const components = (
           '& > div[class*="MuiAccordion-root"]:before': {
             height: 0,
           },
+          // Override the default line-clamp from 10 to 2 for the Software template catalog
+          '& > div[class*="MuiGrid-root-"][class*="MuiGrid-container-"][class*="MuiGrid-spacing-xs-2-"] > div[class*="MuiGrid-root-"][class*="MuiGrid-item-"][class*="MuiGrid-grid-xs-12-"] > div[class*="MuiBox-root-"]':
+            {
+              "-webkit-line-clamp": "2",
+            },
         },
       },
     },
