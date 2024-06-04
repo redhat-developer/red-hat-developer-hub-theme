@@ -10,10 +10,10 @@ export const customDarkTheme = (themeColors: ThemeColors) =>
     typography,
     palette: {
       ...themes.dark.getTheme("v5")?.palette,
-      ...(themeColors.primaryColor && {
+      ...(themeColors.primary?.main && {
         primary: {
           ...themes.light.getTheme("v5")?.palette.primary,
-          main: themeColors.primaryColor,
+          main: themeColors.primary?.main,
         },
       }),
       navigation: {

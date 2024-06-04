@@ -1,12 +1,29 @@
 import React from "react";
 import { ConfigApi, configApiRef, useApi } from "@backstage/core-plugin-api";
 
+type PrimaryColors = {
+  [key: string]: string | undefined;
+};
+
+type SecondaryColors = {
+  [key: string]: string | undefined;
+};
+
 export type BrandingThemeColors = {
-  primaryColor?: string;
+  primary?: PrimaryColors;
+  secondary?: SecondaryColors;
   headerColor1?: string;
   headerColor2?: string;
   navigationIndicatorColor?: string;
 };
+
+const colorKeys = [
+  "main",
+  "containedButtonBackground",
+  "textHover",
+  "focusVisibleBorder",
+  "dark",
+];
 
 export const useBrandingThemeColors = (
   themeName: string,
@@ -20,9 +37,6 @@ export const useBrandingThemeColors = (
   return React.useMemo(() => {
     const brandingThemeColors: BrandingThemeColors = {};
     if (configApi) {
-      brandingThemeColors.primaryColor = configApi.getOptionalString(
-        `app.branding.theme.${themeName}.primaryColor`,
-      );
       brandingThemeColors.headerColor1 = configApi.getOptionalString(
         `app.branding.theme.${themeName}.headerColor1`,
       );
@@ -33,6 +47,20 @@ export const useBrandingThemeColors = (
         configApi.getOptionalString(
           `app.branding.theme.${themeName}.navigationIndicatorColor`,
         );
+
+      brandingThemeColors.primary = colorKeys.reduce((acc, key) => {
+        acc[key] = configApi.getOptionalString(
+          `app.branding.theme.${themeName}.primary.${key}`,
+        );
+        return acc;
+      }, {} as PrimaryColors);
+
+      brandingThemeColors.secondary = colorKeys.reduce((acc, key) => {
+        acc[key] = configApi.getOptionalString(
+          `app.branding.theme.${themeName}.secondary.${key}`,
+        );
+        return acc;
+      }, {} as SecondaryColors);
     }
     return brandingThemeColors;
   }, [configApi]);

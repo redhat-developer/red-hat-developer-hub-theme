@@ -86,16 +86,16 @@ export const components = (
         },
         containedPrimary: {
           backgroundColor: themePalette.primary.containedButtonBackground,
-          color: themePalette.primary.contrastText,
+          color: themePalette.general.contrastText,
           "&:hover": {
             backgroundColor: themePalette.primary.dark,
-            color: themePalette.primary.contrastText,
+            color: themePalette.general.contrastText,
           },
           "&:focus-visible": {
             boxShadow: `inset 0 0 0 1px ${themePalette.general.focusVisibleBorder}`,
             outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
             backgroundColor: themePalette.primary.dark,
-            color: themePalette.primary.contrastText,
+            color: themePalette.general.contrastText,
           },
           "&:disabled": {
             color: themePalette.general.disabled,
@@ -104,16 +104,16 @@ export const components = (
         },
         containedSecondary: {
           backgroundColor: themePalette.secondary.containedButtonBackground,
-          color: themePalette.secondary.contrastText,
+          color: themePalette.general.contrastText,
           "&:hover": {
             backgroundColor: themePalette.secondary.dark,
-            color: themePalette.secondary.contrastText,
+            color: themePalette.general.contrastText,
           },
           "&:focus-visible": {
             boxShadow: `inset 0 0 0 1px ${themePalette.general.focusVisibleBorder}`,
             outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
             backgroundColor: themePalette.secondary.dark,
-            color: themePalette.secondary.contrastText,
+            color: themePalette.general.contrastText,
           },
           "&:disabled": {
             color: themePalette.general.disabled,
@@ -353,7 +353,7 @@ export const components = (
           textTransform: "unset !important",
           color: `${themePalette.general.tableColumnTitleColor} !important`,
           '& > span[class*="MuiTableSortLabel-active"]': {
-            color: `${themePalette.general.tableColumnTitleActiveColor} !important`,
+            color: `${themePalette.primary.main} !important`,
           },
           '& > span > svg[class*="MuiTableSortLabel-icon"]': {
             color: "inherit !important",
