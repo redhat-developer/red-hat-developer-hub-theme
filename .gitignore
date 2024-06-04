@@ -4,3 +4,9 @@
 /visual-regression-diffs
 /*.log
 /*.tgz
+/.storybook/preview.ts
+/src/stories/assets/
+/src/stories/*.mdx
+/src/stories/*.css
+/src/stories/*.tsx
+/src/stories/*.stories.ts
