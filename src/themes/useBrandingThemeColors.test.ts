@@ -12,8 +12,8 @@ describe("useBrandingThemeColors", () => {
     (useApi as jest.Mock).mockReturnValue({
       getOptionalString: jest.fn().mockImplementation((key) => {
         switch (key) {
-          // case "app.branding.theme.someTheme.primaryColor":
-          //   return "blue";
+          case "app.branding.theme.someTheme.primaryColor":
+            return "blue";
           case "app.branding.theme.someTheme.headerColor1":
             return "red";
           case "app.branding.theme.someTheme.headerColor2":
@@ -21,12 +21,13 @@ describe("useBrandingThemeColors", () => {
           case "app.branding.theme.someTheme.navigationIndicatorColor":
             return "purple";
           default:
-            return "";
+            return undefined;
         }
       }),
     });
     const { result } = renderHook(() => useBrandingThemeColors("someTheme"));
-    // expect(result.current.primaryColor).toBe("blue");
+    expect(result.current.primary?.main).toBe("blue");
+    expect(result.current.primaryColor).toBeUndefined();
     expect(result.current.headerColor1).toBe("red");
     expect(result.current.headerColor2).toBe("yellow");
     expect(result.current.navigationIndicatorColor).toBe("purple");
@@ -40,7 +41,8 @@ describe("useBrandingThemeColors", () => {
       }),
     );
 
-    // const { result } = renderHook(() => useBrandingThemeColors("someTheme"));
-    // expect(result.current.primaryColor).toBeUndefined();
+    const { result } = renderHook(() => useBrandingThemeColors("someTheme"));
+    expect(result.current.primaryColor).toBeUndefined();
+    expect(result.current.primary?.main).toBeUndefined();
   });
 });
