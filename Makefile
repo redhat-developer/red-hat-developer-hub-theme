@@ -1,12 +1,12 @@
 .PHONY: init
 init:
 	git submodule init
-	if [ ! -d "node_modules" ]; then npm install; fi
+	if [ ! -d "node_modules" ]; then yarn install --frozen-lockfile; fi
 
 .PHONY: pack
 pack:
 	rm -rf dist *.tgz
-	npm run build
+	yarn build
 	npm pack
 	tar -tzf *mui-themes*.tgz
 
