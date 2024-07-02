@@ -20,29 +20,25 @@ export const defaultThemePalette = (mode: string, themeColors: ThemeColors) => {
         tableTitleColor: "#E0E0E0",
         tableSubtitleColor: "#E0E0E0",
         tableColumnTitleColor: "#E0E0E0",
+        tableColumnTitleActiveColor: "#1FA7F8",
         tableRowHover: "#0f1214",
         tableBorderColor: "#515151",
         tableBackgroundColor: "#1b1d21",
         tabsBottomBorderColor: "#444548",
-        contrastText: "#FFF",
       },
       primary: {
-        main: themeColors.primary?.main || "#1FA7F8", // text button color, button background color
-        containedButtonBackground:
-          themeColors.primary?.containedButtonBackground || "#0066CC", // contained button background color
-        textHover: themeColors.primary?.textHover || "#73BCF7", // text button hover color
-        focusVisibleBorder:
-          themeColors.primary?.focusVisibleBorder || "#ADD6FF",
-        dark: themeColors.primary?.dark || "#004080", // contained button hover background color
+        main: themeColors.primaryColor || "#1FA7F8", // text button color, button background color
+        containedButtonBackground: "#0066CC", // contained button background color
+        textHover: "#73BCF7", // text button hover color
+        contrastText: "#FFF", // contained button text color
+        dark: "#004080", // contained button hover background color
       },
       secondary: {
-        main: themeColors.secondary?.main || "#B2A3FF",
-        containedButtonBackground:
-          themeColors.secondary?.containedButtonBackground || "#8476D1",
-        textHover: themeColors.secondary?.textHover || "#CBC1FF",
-        focusVisibleBorder:
-          themeColors.secondary?.focusVisibleBorder || "#D0C7FF",
-        dark: themeColors.secondary?.dark || "#6753AC",
+        main: "#B2A3FF",
+        containedButtonBackground: "#8476D1",
+        textHover: "#CBC1FF",
+        contrastText: "#FFF",
+        dark: "#6753AC",
       },
     };
   }
@@ -51,6 +47,7 @@ export const defaultThemePalette = (mode: string, themeColors: ThemeColors) => {
       disabledBackground: "#D2D2D2",
       disabled: "#6A6E73",
       searchBarBorderColor: "#E4E4E4",
+      focusVisibleBorder: "#0066CC",
       formControlBackgroundColor: "#FFF",
       mainSectionBackgroundColor: "#FFF",
       headerBackgroundColor: "#FFF",
@@ -63,28 +60,25 @@ export const defaultThemePalette = (mode: string, themeColors: ThemeColors) => {
       tableTitleColor: "#181818",
       tableSubtitleColor: "#616161",
       tableColumnTitleColor: "#151515",
+      tableColumnTitleActiveColor: "#0066CC",
       tableRowHover: "#F5F5F5",
       tableBorderColor: "#E0E0E0",
       tableBackgroundColor: "#FFF",
       tabsBottomBorderColor: "#D2D2D2",
-      contrastText: "#FFF",
     },
     primary: {
-      main: themeColors.primary?.main || "#0066CC",
-      containedButtonBackground:
-        themeColors.primary?.containedButtonBackground || "#0066CC",
-      textHover: themeColors.primary?.textHover || "#004080",
-      focusVisibleBorder: themeColors.primary?.focusVisibleBorder || "#0066CC",
-      dark: themeColors.primary?.dark || "#004080",
+      main: themeColors.primaryColor || "#0066CC",
+      containedButtonBackground: "#0066CC",
+      mainHover: "#004080",
+      contrastText: "#FFF",
+      dark: "#004080",
     },
     secondary: {
-      main: themeColors.secondary?.main || "#8476D1",
-      containedButtonBackground:
-        themeColors.secondary?.containedButtonBackground || "#8476D1",
-      textHover: themeColors.secondary?.textHover || "#6753AC",
-      focusVisibleBorder:
-        themeColors.secondary?.focusVisibleBorder || "#8476D1",
-      dark: themeColors.secondary?.dark || "#6753AC",
+      main: "#8476D1",
+      containedButtonBackground: "#8476D1",
+      mainHover: "#6753AC",
+      contrastText: "#FFF",
+      dark: "#6753AC",
     },
   };
 };

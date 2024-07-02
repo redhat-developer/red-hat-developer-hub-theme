@@ -1,9 +1,12 @@
 import { themes } from "@backstage/theme";
 import { components } from "./componentOverrides";
 import { pageTheme } from "./pageTheme";
+import { fonts, typography } from "./typography";
 import { ThemeColors } from "./types";
 
 export const customLightTheme = (themeColors: ThemeColors) => ({
+  fontFamily: fonts.text,
+  typography,
   palette: {
     ...themes.light.getTheme("v5")?.palette,
     ...(themeColors.primaryColor && {

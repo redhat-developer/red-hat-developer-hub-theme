@@ -1,33 +1,68 @@
-import { UnifiedThemeOptions } from "@backstage/theme";
-import { defaultThemePalette } from "./defaultThemePalette";
-import { ThemeColors } from "./types";
+import { type UnifiedThemeOptions } from "@backstage/theme";
+import { ThemeConfig, ThemeOptions, RHDHThemePalette } from "../../types";
 
-export const components = (
-  themeColors: ThemeColors,
-  mode: string,
-): UnifiedThemeOptions["components"] => {
-  const themePalette = defaultThemePalette(mode, themeColors);
-  return {
-    //
-    // MUI components
-    //
+export type Component = {
+  defaultProps?: unknown;
+  styleOverrides?: unknown;
+  variants?: unknown;
+};
 
-    // MUI base
-    MuiTypography: {
+export type Components = UnifiedThemeOptions["components"] & {
+  BackstageHeaderTabs?: Component;
+  BackstageSidebar?: Component;
+  BackstageSidebarItem?: Component;
+  BackstagePage?: Component;
+  BackstageContent?: Component;
+  BackstageContentHeader?: Component;
+  BackstageHeader?: Component;
+  BackstageItemCardHeader?: Component;
+  BackstageTableToolbar?: Component;
+  CatalogReactUserListPicker?: Component;
+  PrivateTabIndicator?: Component;
+};
+
+export const components = (themeConfig: ThemeConfig): Components => {
+  // Short hands to ensure that the code doesn't break if one of the properties is not defined.
+
+  const options = themeConfig.options ?? ({} as ThemeOptions);
+  const disableRipple = options?.rippleEffect !== "on"; // by default ripple effect is disabled
+
+  const palette = themeConfig.palette ?? {};
+
+  const rhdh = palette.rhdh;
+  const general = rhdh?.general || ({} as RHDHThemePalette["general"]);
+  const rhdhPrimary = rhdh?.primary || ({} as RHDHThemePalette["primary"]);
+  const rhdhSecondary =
+    rhdh?.secondary || ({} as RHDHThemePalette["secondary"]);
+
+  const components: Components = {};
+  if (options.components === "backstage" || options.components === "mui") {
+    return components;
+  }
+
+  //
+  // MUI components
+  //
+
+  // MUI base
+  if (options.buttons !== "mui") {
+    components.MuiTypography = {
       styleOverrides: {
         button: {
           textTransform: "none",
           fontWeight: "bold",
         },
       },
-    },
+    };
+  }
 
-    // MUI container
-    MuiPaper: {
+  // MUI container
+  if (options.paper !== "mui") {
+    components.MuiPaper = {
       styleOverrides: {
         root: {
           boxShadow: "none",
-          backgroundColor: themePalette.general.cardBackgroundColor,
+          backgroundColor: general.cardBackgroundColor,
           // hide the first child element which is a divider with MuiDivider-root classname in MuiPaper
           '& > hr:first-child[class|="MuiDivider-root"]': {
             height: 0,
@@ -47,26 +82,28 @@ export const components = (
         elevation1: {
           boxShadow: "none",
           borderRadius: "0",
-          outline: `1px solid ${themePalette.general.cardBorderColor}`,
+          outline: `1px solid ${general.cardBorderColor}`,
           '& > hr[class|="MuiDivider-root"]': {
-            backgroundColor: themePalette.general.cardBorderColor,
+            backgroundColor: general.cardBorderColor,
           },
         },
         elevation2: {
-          backgroundColor: themePalette.general.tableBackgroundColor,
+          backgroundColor: general.tableBackgroundColor,
           boxShadow: "none",
-          outline: `1px solid ${themePalette.general.cardBorderColor}`,
+          outline: `1px solid ${general.cardBorderColor}`,
           padding: "1rem",
         },
       },
-    },
+    };
+  }
 
-    // MUI buttons
-    // Don't disableRipple for MuiButtonBase as it will affect all the buttons
-    // and we need to ensure that the buttons have a right touch and focus styling.
-    MuiButton: {
+  // MUI buttons
+  // Don't disableRipple for MuiButtonBase as it will affect all the buttons
+  // and we need to ensure that the buttons have a right touch and focus styling.
+  if (options.buttons !== "mui") {
+    components.MuiButton = {
       defaultProps: {
-        disableRipple: true,
+        disableRipple,
       },
       styleOverrides: {
         root: {
@@ -85,126 +122,124 @@ export const components = (
           },
         },
         containedPrimary: {
-          backgroundColor: themePalette.primary.containedButtonBackground,
-          color: themePalette.general.contrastText,
+          backgroundColor: rhdhPrimary.containedButtonBackground,
+          color: general.contrastText,
           "&:hover": {
-            backgroundColor: themePalette.primary.dark,
-            color: themePalette.general.contrastText,
+            backgroundColor: rhdhPrimary.dark,
+            color: general.contrastText,
           },
           "&:focus-visible": {
-            boxShadow: `inset 0 0 0 1px ${themePalette.general.focusVisibleBorder}`,
-            outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
-            backgroundColor: themePalette.primary.dark,
-            color: themePalette.general.contrastText,
+            boxShadow: `inset 0 0 0 1px ${rhdhPrimary.focusVisibleBorder}`,
+            outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
+            backgroundColor: rhdhPrimary.dark,
+            color: general.contrastText,
           },
           "&:disabled": {
-            color: themePalette.general.disabled,
-            backgroundColor: themePalette.general.disabledBackground,
+            color: general.disabled,
+            backgroundColor: general.disabledBackground,
           },
         },
         containedSecondary: {
-          backgroundColor: themePalette.secondary.containedButtonBackground,
-          color: themePalette.general.contrastText,
           "&:hover": {
-            backgroundColor: themePalette.secondary.dark,
-            color: themePalette.general.contrastText,
+            backgroundColor: rhdhSecondary.dark,
+            color: general.contrastText,
           },
           "&:focus-visible": {
-            boxShadow: `inset 0 0 0 1px ${themePalette.general.focusVisibleBorder}`,
-            outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
-            backgroundColor: themePalette.secondary.dark,
-            color: themePalette.general.contrastText,
+            boxShadow: `inset 0 0 0 1px ${rhdhSecondary.focusVisibleBorder}`,
+            outline: `${rhdhSecondary.focusVisibleBorder} solid 1px`,
+            backgroundColor: rhdhSecondary.dark,
+            color: general.contrastText,
           },
           "&:disabled": {
-            color: themePalette.general.disabled,
-            backgroundColor: themePalette.general.disabledBackground,
+            color: general.disabled,
+            backgroundColor: general.disabledBackground,
           },
         },
         outlined: {
           border: "0",
-          boxShadow: `inset 0 0 0 1px ${themePalette.primary.main}`,
+          boxShadow: `inset 0 0 0 1px ${rhdhPrimary.main}`,
           "&:hover": {
             border: "0",
-            boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
+            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
             backgroundColor: "transparent",
           },
           "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
-            outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
+            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
+            outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
           },
         },
         outlinedPrimary: {
-          color: themePalette.primary.main,
-          boxShadow: `inset 0 0 0 1px ${themePalette.primary.main}`,
+          color: rhdhPrimary.main,
+          boxShadow: `inset 0 0 0 1px ${rhdhPrimary.main}`,
           border: "0",
           "&:hover": {
             border: "0",
-            boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
+            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
             backgroundColor: "transparent",
           },
           "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
-            outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
+            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
+            outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
           },
         },
         outlinedSecondary: {
-          color: themePalette.secondary.main,
-          boxShadow: `inset 0 0 0 1px ${themePalette.secondary.main}`,
+          color: rhdhSecondary.main,
+          boxShadow: `inset 0 0 0 1px ${rhdhSecondary.main}`,
           border: "0",
           "&:hover": {
             border: "0",
-            boxShadow: `inset 0 0 0 2px ${themePalette.secondary.main}`,
+            boxShadow: `inset 0 0 0 2px ${rhdhSecondary.main}`,
             backgroundColor: "transparent",
           },
           "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${themePalette.secondary.main}`,
-            outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
+            boxShadow: `inset 0 0 0 2px ${rhdhSecondary.main}`,
+            outline: `${rhdhSecondary.focusVisibleBorder} solid 1px`,
           },
         },
         text: {
-          color: themePalette.primary.main,
+          color: rhdhPrimary.main,
           "&:hover": {
-            color: themePalette.primary.textHover,
+            color: rhdhPrimary.textHover,
             backgroundColor: "transparent",
           },
           "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${themePalette.primary.main}`,
-            outline: `${themePalette.general.focusVisibleBorder} solid 1px`,
+            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
+            outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
           },
         },
         textPrimary: {
-          color: themePalette.primary.main,
+          color: rhdhPrimary.main,
           "&:hover": {
-            color: themePalette.primary.textHover,
+            color: rhdhPrimary.textHover,
             backgroundColor: "transparent",
           },
         },
         textSecondary: {
-          color: themePalette.secondary.main,
+          color: rhdhSecondary.main,
           "&:hover": {
-            color: themePalette.secondary.textHover,
+            color: rhdhSecondary.textHover,
             backgroundColor: "transparent",
           },
         },
       },
-    },
-    MuiToggleButton: {
+    };
+    components.MuiToggleButton = {
       styleOverrides: {
         root: {
           textTransform: "none",
         },
       },
-    },
-    MuiIconButton: {
+    };
+    components.MuiIconButton = {
       styleOverrides: {
         root: {
           "&:disabled": {
-            color: themePalette.general.disabled,
+            color: general.disabled,
           },
         },
       },
-    },
-    MuiLink: {
+    };
+    components.MuiLink = {
       styleOverrides: {
         underlineHover: {
           "&:hover": {
@@ -212,32 +247,36 @@ export const components = (
           },
         },
       },
-    },
+    };
+  }
 
-    // MUI input fields
-    MuiInputBase: {
+  // MUI input fields
+  if (options.inputs !== "mui") {
+    components.MuiInputBase = {
       styleOverrides: {
         input: {
           "&::placeholder": {
-            color: themePalette.general.disabled,
+            color: general.disabled,
             opacity: 1,
           },
         },
       },
-    },
-    MuiOutlinedInput: {
+    };
+    components.MuiOutlinedInput = {
       styleOverrides: {
         input: {
           "&:autofill": {
-            boxShadow: `0 0 0 100px ${themePalette.general.formControlBackgroundColor} inset`,
+            boxShadow: `0 0 0 100px ${general.formControlBackgroundColor} inset`,
             borderRadius: "unset",
           },
         },
       },
-    },
+    };
+  }
 
-    // MUI accordion
-    MuiAccordion: {
+  // MUI accordion
+  if (options.accordions !== "mui") {
+    components.MuiAccordion = {
       styleOverrides: {
         root: {
           boxShadow: "none",
@@ -253,19 +292,21 @@ export const components = (
           },
         },
       },
-    },
+    };
+  }
 
-    // MUI cards
-    MuiCard: {
+  // MUI cards
+  if (options.cards !== "mui") {
+    components.MuiCard = {
       styleOverrides: {
         root: {
           display: "flex",
           flexDirection: "column",
-          backgroundColor: themePalette.general.cardBackgroundColor,
+          backgroundColor: general.cardBackgroundColor,
         },
       },
-    },
-    MuiCardHeader: {
+    };
+    components.MuiCardHeader = {
       styleOverrides: {
         content: {
           "& > span > nav span": {
@@ -282,26 +323,26 @@ export const components = (
             fontSize: "1.125rem",
           },
           '& > a[class*="MuiIconButton-root"]:hover': {
-            color: themePalette.primary.textHover,
+            color: rhdhPrimary.textHover,
             backgroundColor: "transparent",
           },
         },
       },
-    },
-    MuiCardContent: {
+    };
+    components.MuiCardContent = {
       styleOverrides: {
         root: {
           flexGrow: "1",
-          backgroundColor: themePalette.general.cardBackgroundColor,
+          backgroundColor: general.cardBackgroundColor,
           '& > div > div > h2[class*="MuiTypography-h2-"]': {
             textTransform: "unset",
-            color: themePalette.general.cardSubtitleColor,
+            color: general.cardSubtitleColor,
             opacity: "40%",
           },
           '& > div > div > div[class*="MuiChip-sizeSmall"]': {
             backgroundColor: "transparent",
             borderRadius: "8px",
-            outline: `1px solid ${themePalette.general.disabled}`,
+            outline: `1px solid ${general.disabled}`,
           },
           '& > div[class*="Mui-expanded"]': {
             margin: "auto",
@@ -316,58 +357,60 @@ export const components = (
             },
         },
       },
-    },
+    };
+  }
 
-    // MUI table
-    MuiTable: {
+  // MUI table
+  if (options.tables !== "mui") {
+    components.MuiTable = {
       styleOverrides: {
         root: {
-          backgroundColor: themePalette.general.tableBackgroundColor,
+          backgroundColor: general.tableBackgroundColor,
         },
       },
-    },
-    MuiTableRow: {
+    };
+    components.MuiTableRow = {
       styleOverrides: {
         root: {
-          backgroundColor: themePalette.general.tableBackgroundColor,
+          backgroundColor: general.tableBackgroundColor,
           '&:not([class*="MuiTableRow-footer"]):hover': {
-            backgroundColor: `${themePalette.general.tableRowHover} !important`,
+            backgroundColor: `${general.tableRowHover} !important`,
           },
           '& > th[class*="MuiTableCell-head"]': {
-            backgroundColor: themePalette.general.tableBackgroundColor,
+            backgroundColor: general.tableBackgroundColor,
           },
         },
       },
-    },
-    MuiTableCell: {
+    };
+    components.MuiTableCell = {
       styleOverrides: {
         root: {
           textTransform: "none",
           '&[class*="BackstageTableHeader-header"]': {
             borderTop: "unset",
-            borderBottom: `1px solid ${themePalette.general.tableBorderColor}`,
+            borderBottom: `1px solid ${general.tableBorderColor}`,
           },
         },
         // @ts-expect-error: MUI types are not up to date
         head: {
           textTransform: "unset !important",
-          color: `${themePalette.general.tableColumnTitleColor} !important`,
+          color: `${general.tableColumnTitleColor} !important`,
           '& > span[class*="MuiTableSortLabel-active"]': {
-            color: `${themePalette.primary.main} !important`,
+            color: `${rhdhPrimary.main} !important`,
           },
           '& > span > svg[class*="MuiTableSortLabel-icon"]': {
             color: "inherit !important",
           },
         },
         body: {
-          color: themePalette.general.tableTitleColor,
+          color: general.tableTitleColor,
           '& > div[class*="MuiChip-sizeSmall"]': {
             margin: "2px",
           },
         },
       },
-    },
-    MuiTableFooter: {
+    };
+    components.MuiTableFooter = {
       styleOverrides: {
         root: {
           "& > tr > td": {
@@ -375,85 +418,92 @@ export const components = (
           },
         },
       },
-    },
+    };
+  }
 
-    // MUI toolbar
-    MuiToolbar: {
+  // MUI toolbar
+  if (options.toolbars !== "mui") {
+    components.MuiToolbar = {
       styleOverrides: {
         regular: {
           '& > div > h2[class*="MuiTypography-h5"]': {
             fontSize: "1.25rem",
-            color: themePalette.general.tableTitleColor,
+            color: general.tableTitleColor,
           },
         },
       },
-    },
+    };
+  }
 
-    // MUI dialogs
-    MuiDialogContent: {
+  // MUI dialogs
+  if (options.dialogs !== "mui") {
+    components.MuiDialogContent = {
       styleOverrides: {
         root: {
           "& > div": {
-            backgroundColor: themePalette.general.cardBackgroundColor,
+            backgroundColor: general.cardBackgroundColor,
           },
         },
       },
-    },
+    };
+  }
 
-    // MUI tabs
-    MuiTabs: {
+  // MUI tabs
+  if (options.tabs !== "mui") {
+    components.MuiTabs = {
       defaultProps: {
         TabIndicatorProps: {
           style: {
-            background:
-              themeColors.navigationIndicatorColor || themePalette.primary.main,
+            background: rhdhPrimary.main,
           },
         },
       },
       styleOverrides: {
         root: {
-          boxShadow: `0 -1px ${themePalette.general.tabsBottomBorderColor} inset`,
+          boxShadow: `0 -1px ${general.tabsBottomBorderColor} inset`,
           padding: "0 1.5rem",
         },
         flexContainerVertical: {
           "& > button:hover": {
-            boxShadow: `-3px 0 ${themePalette.general.tabsBottomBorderColor} inset`,
+            boxShadow: `-3px 0 ${general.tabsBottomBorderColor} inset`,
           },
         },
       },
-    },
-    MuiTab: {
+    };
+    components.MuiTab = {
       defaultProps: {
-        disableRipple: true,
+        disableRipple,
       },
       styleOverrides: {
         root: {
           textTransform: "none",
           minWidth: "initial !important",
           "&.Mui-disabled": {
-            backgroundColor: themePalette.general.disabledBackground,
+            backgroundColor: general.disabledBackground,
           },
         },
       },
-    },
+    };
+  }
 
-    //
-    // Backstage
-    //
-    BackstageHeaderTabs: {
+  //
+  // Backstage
+  //
+  if (options.tabs !== "mui") {
+    components.BackstageHeaderTabs = {
       styleOverrides: {
         tabsWrapper: {
           paddingLeft: "0",
-          backgroundColor: themePalette.general.mainSectionBackgroundColor,
+          backgroundColor: general.mainSectionBackgroundColor,
         },
         defaultTab: {
           textTransform: "none",
           fontSize: "1rem",
           fontWeight: "500",
-          color: themePalette.general.disabled,
+          color: general.disabled,
           padding: "0.5rem 1rem",
           "&:hover": {
-            boxShadow: `0 -3px ${themePalette.general.tabsBottomBorderColor} inset`,
+            boxShadow: `0 -3px ${general.tabsBottomBorderColor} inset`,
           },
         },
         tabRoot: {
@@ -461,19 +511,22 @@ export const components = (
             backgroundColor: "unset",
           },
           "&:not(.Mui-selected):hover": {
-            color: themePalette.general.disabled,
+            color: general.disabled,
           },
         },
       },
-    },
-    BackstageSidebar: {
+    };
+  }
+
+  if (options.sidebars !== "mui") {
+    components.BackstageSidebar = {
       styleOverrides: {
         drawer: {
-          backgroundColor: themePalette.general.sideBarBackgroundColor,
+          backgroundColor: general.sideBarBackgroundColor,
         },
       },
-    },
-    BackstageSidebarItem: {
+    };
+    components.BackstageSidebarItem = {
       styleOverrides: {
         label: {
           '&[class*="MuiTypography-subtitle2"]': {
@@ -481,29 +534,32 @@ export const components = (
           },
         },
       },
-    },
-    BackstagePage: {
+    };
+  }
+
+  if (options.pages !== "mui") {
+    components.BackstagePage = {
       styleOverrides: {
         root: {
-          backgroundColor: themePalette.general.mainSectionBackgroundColor,
+          backgroundColor: general.mainSectionBackgroundColor,
         },
       },
-    },
-    BackstageContent: {
+    };
+    components.BackstageContent = {
       styleOverrides: {
         root: {
-          backgroundColor: themePalette.general.mainSectionBackgroundColor,
+          backgroundColor: general.mainSectionBackgroundColor,
           "& div:first-child": {
             '& > div[class*="-searchBar"]': {
-              backgroundColor: themePalette.general.formControlBackgroundColor,
-              border: `1px solid ${themePalette.general.searchBarBorderColor}`,
+              backgroundColor: general.formControlBackgroundColor,
+              border: `1px solid ${general.searchBarBorderColor}`,
               boxShadow: "none",
             },
           },
         },
       },
-    },
-    BackstageContentHeader: {
+    };
+    components.BackstageContentHeader = {
       styleOverrides: {
         leftItemsBox: {
           '& > h2[class*="BackstageContentHeader-title-"][class*="MuiTypography-h4-"]':
@@ -513,18 +569,21 @@ export const components = (
             },
         },
       },
-    },
-    BackstageHeader: {
+    };
+  }
+
+  if (options.headers !== "mui") {
+    components.BackstageHeader = {
       styleOverrides: {
         header: {
-          color: themePalette.general.headerTextColor,
-          backgroundImage: `none, linear-gradient(90deg, ${themeColors.headerColor1}, ${themeColors.headerColor2})`,
-          backgroundColor: themePalette.general.headerBackgroundColor,
+          // color: general.headerTextColor,
+          // backgroundImage: `none, linear-gradient(90deg, ${headerColor1}, ${headerColor2})`,
+          // backgroundColor: general.headerBackgroundColor,
           boxShadow: "none",
-          borderBottom: `1px solid ${themePalette.general.headerBottomBorderColor}`,
+          borderBottom: `1px solid ${general.headerBottomBorderColor}`,
         },
         title: {
-          color: themePalette.general.cardSubtitleColor,
+          color: general.cardSubtitleColor,
           fontWeight: "bold",
           '&[class*="MuiTypography-h1-"]': {
             fontWeight: "bold",
@@ -532,57 +591,60 @@ export const components = (
           },
         },
         leftItemsBox: {
-          color: themePalette.general.headerTextColor,
+          color: general.headerTextColor,
           "& > nav": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
           "& > p": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
           "& > span": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
         },
         rightItemsBox: {
-          color: themePalette.general.headerTextColor,
+          color: general.headerTextColor,
           "& div": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
           "& p": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
           "& a": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
           "& button": {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
           },
         },
       },
-    },
-    BackstageItemCardHeader: {
+    };
+    components.BackstageItemCardHeader = {
       styleOverrides: {
         root: {
           '&[class*="MuiBox-root-"]': {
-            color: themePalette.general.headerTextColor,
+            color: general.headerTextColor,
             backgroundImage: "none",
-            // backgroundColor: themePalette.general.headerBackgroundColor,
-            borderBottom: `1px solid ${themePalette.general.cardBorderColor}`,
+            backgroundColor: general.headerBackgroundColor,
+            borderBottom: `1px solid ${general.cardBorderColor}`,
           },
           '& > h3[class*="MuiTypography-subtitle2-"] > div > div:first-child': {
-            color: themePalette.general.tableSubtitleColor,
+            color: general.tableSubtitleColor,
             textTransform: "capitalize",
           },
           '& > h3[class*="MuiTypography-subtitle2-"] > div > div:last-child': {
-            color: themePalette.general.cardSubtitleColor,
+            color: general.cardSubtitleColor,
           },
           '& > h4[class*="MuiTypography-h6-"]': {
-            color: themePalette.general.cardSubtitleColor,
+            color: general.cardSubtitleColor,
           },
         },
       },
-    },
-    BackstageTableToolbar: {
+    };
+  }
+
+  if (options.toolbars !== "mui") {
+    components.BackstageTableToolbar = {
       styleOverrides: {
         root: {
           "& h2": {
@@ -595,22 +657,25 @@ export const components = (
           },
         },
       },
-    },
+    };
+  }
 
-    //
-    // Others
-    //
-    CatalogReactUserListPicker: {
-      styleOverrides: {
-        root: {
-          borderRadius: "4px",
-        },
-        title: {
-          textTransform: "none",
-        },
+  //
+  // Others
+  //
+  components.CatalogReactUserListPicker = {
+    styleOverrides: {
+      root: {
+        borderRadius: "4px",
+      },
+      title: {
+        textTransform: "none",
       },
     },
-    PrivateTabIndicator: {
+  };
+
+  if (options.tabs !== "mui") {
+    components.PrivateTabIndicator = {
       styleOverrides: {
         root: {
           height: "3px",
@@ -619,6 +684,8 @@ export const components = (
           width: "3px",
         },
       },
-    },
-  };
+    };
+  }
+
+  return components;
 };
