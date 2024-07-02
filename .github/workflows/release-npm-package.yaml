@@ -23,7 +23,7 @@ jobs:
         run: |
           latest_version=$(npm view @redhat-developer/red-hat-developer-hub-theme@latest version)
           npm version $latest_version --no-git-tag-version
-          npm version patch           --no-git-tag-version
+          npm version minor           --no-git-tag-version
           npm publish --access=public --tag=latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

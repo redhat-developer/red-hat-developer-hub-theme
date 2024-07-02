@@ -1,109 +1,167 @@
 import React from "react";
 import { AppTheme } from "@backstage/core-plugin-api";
-import { UnifiedTheme, UnifiedThemeProvider, themes } from "@backstage/theme";
+import {
+  UnifiedTheme,
+  UnifiedThemeProvider,
+  createUnifiedTheme,
+  themes,
+} from "@backstage/theme";
 import LightIcon from "@material-ui/icons/WbSunny";
 import DarkIcon from "@material-ui/icons/Brightness2";
 import { createTheme } from "@mui/material/styles";
 
+import { useThemeConfig } from "../hooks/useThemeConfig";
+
+import * as backstage from "./backstage";
 import * as rhdh10 from "./rhdh-1.0";
 import * as rhdh11 from "./rhdh-1.1";
+import * as rhdh120 from "./rhdh-1.2.0";
 import * as rhdh from "./rhdh";
-import {
-  BrandingThemeColors,
-  useBrandingThemeColors,
-} from "./useBrandingThemeColors";
+import { ThemeConfig } from "../types";
+import { useTheme } from "../hooks/useTheme";
 
-const createProvider =
-  (theme: UnifiedTheme): AppTheme["Provider"] =>
-  ({ children }) => {
+const createThemeProvider = (theme: UnifiedTheme): AppTheme["Provider"] =>
+  function RHDHThemeProvider({ children }) {
     return (
       <UnifiedThemeProvider theme={theme}>{children}</UnifiedThemeProvider>
     );
   };
 
-const createBrandedProvider =
-  (
-    brandingThemeName: string,
-    brandedThemeFactory: (
-      brandingThemeColors: BrandingThemeColors,
-    ) => UnifiedTheme,
-  ): AppTheme["Provider"] =>
-  ({ children }) => {
-    const brandingThemeColors = useBrandingThemeColors(brandingThemeName);
-    const unifiedTheme = React.useMemo(
-      () => brandedThemeFactory(brandingThemeColors),
-      [brandingThemeColors],
-    );
+const createThemeProviderForThemeConfig = (
+  themeConfig: ThemeConfig,
+): AppTheme["Provider"] =>
+  function RHDHThemeProviderForThemeConfig({ children }) {
+    const theme = useTheme(themeConfig);
     return (
-      <UnifiedThemeProvider theme={unifiedTheme}>
-        {children}
-      </UnifiedThemeProvider>
+      <UnifiedThemeProvider theme={theme}>{children}</UnifiedThemeProvider>
+    );
+  };
+
+const createThemeProviderForThemeName = (
+  themeName: string,
+): AppTheme["Provider"] =>
+  function RHDHThemeProviderForThemeName({ children }) {
+    const themeConfig = useThemeConfig(themeName);
+    const theme = useTheme(themeConfig);
+    return (
+      <UnifiedThemeProvider theme={theme}>{children}</UnifiedThemeProvider>
     );
   };
 
 export const getAllThemes = (): AppTheme[] => {
   return [
     {
+      id: "light",
+      title: "RHDH Light (latest)",
+      variant: "light",
+      icon: <LightIcon />,
+      Provider: createThemeProviderForThemeName("light"),
+    },
+    {
+      id: "dark",
+      title: "RHDH Dark (latest)",
+      variant: "dark",
+      icon: <DarkIcon />,
+      Provider: createThemeProviderForThemeName("dark"),
+    },
+    {
+      id: "light-customized",
+      title: "RHDH Light (customized)",
+      variant: "light",
+      icon: <LightIcon />,
+      Provider: createThemeProviderForThemeConfig({
+        mode: "light",
+        variant: "rhdh",
+        palette: {
+          primary: { main: "#ff0000" },
+          secondary: { main: "#00ff00" },
+        },
+      }),
+    },
+    {
+      id: "dark-customized",
+      title: "RHDH Dark (customized)",
+      variant: "dark",
+      icon: <DarkIcon />,
+      Provider: createThemeProviderForThemeConfig({
+        mode: "dark",
+        variant: "rhdh",
+        palette: {
+          primary: { main: "#ff0000" },
+          secondary: { main: "#00ff00" },
+        },
+      }),
+    },
+    {
       id: "backstage-light",
       title: "Backstage Light",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createProvider(themes.light),
+      Provider: createThemeProvider(themes.light),
     },
     {
       id: "backstage-dark",
       title: "Backstage Dark",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createProvider(themes.dark),
+      Provider: createThemeProvider(themes.dark),
     },
     {
-      id: "rhdh-1.0-light",
-      title: "RHDH 1.0 Light",
+      id: "rhdh-1.2.0-light",
+      title: "RHDH 1.2.0 Light",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createProvider(rhdh10.customLightTheme({})),
+      Provider: createThemeProvider(
+        createUnifiedTheme(rhdh120.customLightTheme({})),
+      ),
     },
     {
-      id: "rhdh-1.0-dark",
-      title: "RHDH 1.0 Dark",
+      id: "rhdh-1.2.0-dark",
+      title: "RHDH 1.2.0 Dark",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createProvider(rhdh10.customDarkTheme({})),
+      Provider: createThemeProvider(
+        createUnifiedTheme(rhdh120.customDarkTheme({})),
+      ),
     },
     {
       id: "rhdh-1.1-light",
       title: "RHDH 1.1 Light",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createProvider(rhdh11.customLightTheme({})),
+      Provider: createThemeProvider(
+        createUnifiedTheme(rhdh11.customLightTheme({})),
+      ),
     },
     {
       id: "rhdh-1.1-dark",
       title: "RHDH 1.1 Dark",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createProvider(rhdh11.customDarkTheme({})),
+      Provider: createThemeProvider(
+        createUnifiedTheme(rhdh11.customDarkTheme({})),
+      ),
     },
     {
-      id: "rhdh-latest-light",
-      title: "RHDH Light (latest)",
+      id: "rhdh-1.0-light",
+      title: "RHDH 1.0 Light",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createProvider(rhdh.customLightTheme({})),
+      Provider: createThemeProvider(
+        createUnifiedTheme(rhdh10.customLightTheme({})),
+      ),
     },
     {
-      id: "rhdh-latest-dark",
-      title: "RHDH Dark (latest)",
+      id: "rhdh-1.0-dark",
+      title: "RHDH 1.0 Dark",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createProvider(rhdh.customDarkTheme({})),
+      Provider: createThemeProvider(
+        createUnifiedTheme(rhdh10.customDarkTheme({})),
+      ),
     },
   ];
 };
-
-/** @deprecated use getAllThemes instead */
-export const createDevAppThemes = getAllThemes;
 
 export const useAllThemes = (): AppTheme[] => {
   return React.useMemo(() => getAllThemes(), []);
@@ -116,14 +174,14 @@ export const getThemes = (): AppTheme[] => {
       title: "Light",
       variant: "light",
       icon: <LightIcon />,
-      Provider: createBrandedProvider("light", rhdh.customLightTheme),
+      Provider: createThemeProviderForThemeName("light"),
     },
     {
       id: "dark",
       title: "Dark",
       variant: "dark",
       icon: <DarkIcon />,
-      Provider: createBrandedProvider("dark", rhdh.customDarkTheme),
+      Provider: createThemeProviderForThemeName("dark"),
     },
   ];
 };
@@ -135,11 +193,12 @@ export const useThemes = (): AppTheme[] => {
 export const useLoaderTheme = () => {
   return React.useMemo(() => {
     const latestTheme = localStorage.getItem("theme");
-    const unifiedTheme =
-      latestTheme !== "dark"
-        ? rhdh.customLightTheme({})
-        : rhdh.customDarkTheme({});
-    const palette = unifiedTheme.getTheme("v5")?.palette;
-    return createTheme({ palette });
+    const mode = latestTheme?.includes("dark") ? "dark" : "light";
+    const variant = latestTheme?.includes("backstage") ? "backstage" : "rhdh";
+    const themeOptions =
+      variant === "backstage"
+        ? backstage.getDefaultThemeConfig(mode)
+        : rhdh.getDefaultThemeConfig(mode);
+    return createTheme(themeOptions);
   }, []);
 };
