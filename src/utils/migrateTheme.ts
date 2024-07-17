@@ -46,6 +46,7 @@ export const migrateThemeConfig = (
     fontFamily: themeConfig.fontFamily,
     htmlFontSize: themeConfig.htmlFontSize,
     typography: themeConfig.typography,
+    options: themeConfig.options,
   };
 
   if (themeConfig.primaryColor) {
