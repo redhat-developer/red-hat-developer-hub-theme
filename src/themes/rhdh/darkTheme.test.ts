@@ -53,11 +53,9 @@ describe("customDarkTheme", () => {
       },
       primary: {
         main: "#1FA7F8",
-        dark: "#004080",
       },
       secondary: {
         main: "#B2A3FF",
-        dark: "#6753AC",
       },
       status: {
         aborted: "#9E9E9E",
@@ -102,17 +100,11 @@ describe("customDarkTheme", () => {
         },
         primary: {
           main: "#1FA7F8",
-          containedButtonBackground: "#0066CC",
-          textHover: "#73BCF7",
           focusVisibleBorder: "#ADD6FF",
-          dark: "#004080",
         },
         secondary: {
           main: "#B2A3FF",
-          containedButtonBackground: "#8476D1",
-          textHover: "#CBC1FF",
           focusVisibleBorder: "#D0C7FF",
-          dark: "#6753AC",
         },
       },
     });
