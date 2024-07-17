@@ -125,6 +125,20 @@ const testCases: TestCase[] = [
       },
     },
   },
+  {
+    name: "Pass options as well",
+    config: {
+      options: {
+        components: "backstage",
+      },
+    },
+    expected: {
+      palette: {},
+      options: {
+        components: "backstage",
+      },
+    },
+  },
 
   // Migrate navigationIndicatorColor
   {
