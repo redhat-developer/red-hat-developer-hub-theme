@@ -451,13 +451,6 @@ export const components = (themeConfig: ThemeConfig): Components => {
   // MUI tabs
   if (options.tabs !== "mui") {
     components.MuiTabs = {
-      defaultProps: {
-        TabIndicatorProps: {
-          style: {
-            background: rhdhPrimary.main,
-          },
-        },
-      },
       styleOverrides: {
         root: {
           boxShadow: `0 -1px ${general.tabsBottomBorderColor} inset`,
