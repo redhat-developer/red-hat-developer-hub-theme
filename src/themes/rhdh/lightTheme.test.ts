@@ -53,11 +53,9 @@ describe("customLightTheme", () => {
       },
       primary: {
         main: "#0066CC",
-        dark: "#004080",
       },
       secondary: {
         main: "#8476D1",
-        dark: "#6753AC",
       },
       status: {
         aborted: "#757575",
@@ -106,17 +104,11 @@ describe("customLightTheme", () => {
         },
         primary: {
           main: "#0066CC",
-          containedButtonBackground: "#0066CC",
-          textHover: "#004080",
           focusVisibleBorder: "#0066CC",
-          dark: "#004080",
         },
         secondary: {
           main: "#8476D1",
-          containedButtonBackground: "#8476D1",
-          textHover: "#6753AC",
           focusVisibleBorder: "#8476D1",
-          dark: "#6753AC",
         },
       },
     });

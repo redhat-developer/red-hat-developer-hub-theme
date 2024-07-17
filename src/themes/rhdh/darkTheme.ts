@@ -7,17 +7,12 @@ export const customDarkTheme = (): ThemeConfigPalette => {
   return {
     ...palette,
     primary: {
-      ...palette.primary,
       main: "#1FA7F8",
-      dark: "#004080",
     },
     secondary: {
-      ...palette.secondary,
       main: "#B2A3FF",
-      dark: "#6753AC",
     },
     navigation: {
-      ...palette.navigation,
       background: "#0f1214",
       indicator: "#0066CC",
       color: "#ffffff",
@@ -54,17 +49,11 @@ export const customDarkTheme = (): ThemeConfigPalette => {
       },
       primary: {
         main: "#1FA7F8",
-        containedButtonBackground: "#0066CC",
-        textHover: "#73BCF7",
         focusVisibleBorder: "#ADD6FF",
-        dark: "#004080",
       },
       secondary: {
         main: "#B2A3FF",
-        containedButtonBackground: "#8476D1",
-        textHover: "#CBC1FF",
         focusVisibleBorder: "#D0C7FF",
-        dark: "#6753AC",
       },
     },
   };

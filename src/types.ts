@@ -28,18 +28,12 @@ export interface RHDHThemePalette {
 
   primary: {
     main: string;
-    containedButtonBackground: string;
-    textHover: string;
     focusVisibleBorder: string;
-    dark: string;
   };
 
   secondary: {
     main: string;
-    containedButtonBackground: string;
-    textHover: string;
     focusVisibleBorder: string;
-    dark: string;
   };
 }
 

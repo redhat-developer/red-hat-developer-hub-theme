@@ -122,17 +122,9 @@ export const components = (themeConfig: ThemeConfig): Components => {
           },
         },
         containedPrimary: {
-          backgroundColor: rhdhPrimary.containedButtonBackground,
-          color: general.contrastText,
-          "&:hover": {
-            backgroundColor: rhdhPrimary.dark,
-            color: general.contrastText,
-          },
           "&:focus-visible": {
             boxShadow: `inset 0 0 0 1px ${rhdhPrimary.focusVisibleBorder}`,
             outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
-            backgroundColor: rhdhPrimary.dark,
-            color: general.contrastText,
           },
           "&:disabled": {
             color: general.disabled,
@@ -140,15 +132,9 @@ export const components = (themeConfig: ThemeConfig): Components => {
           },
         },
         containedSecondary: {
-          "&:hover": {
-            backgroundColor: rhdhSecondary.dark,
-            color: general.contrastText,
-          },
           "&:focus-visible": {
             boxShadow: `inset 0 0 0 1px ${rhdhSecondary.focusVisibleBorder}`,
             outline: `${rhdhSecondary.focusVisibleBorder} solid 1px`,
-            backgroundColor: rhdhSecondary.dark,
-            color: general.contrastText,
           },
           "&:disabled": {
             color: general.disabled,
@@ -156,69 +142,24 @@ export const components = (themeConfig: ThemeConfig): Components => {
           },
         },
         outlined: {
-          border: "0",
-          boxShadow: `inset 0 0 0 1px ${rhdhPrimary.main}`,
           "&:hover": {
-            border: "0",
-            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
             backgroundColor: "transparent",
-          },
-          "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
-            outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
           },
         },
         outlinedPrimary: {
-          color: rhdhPrimary.main,
-          boxShadow: `inset 0 0 0 1px ${rhdhPrimary.main}`,
-          border: "0",
           "&:hover": {
-            border: "0",
-            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
             backgroundColor: "transparent",
-          },
-          "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
-            outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
           },
         },
         outlinedSecondary: {
-          color: rhdhSecondary.main,
-          boxShadow: `inset 0 0 0 1px ${rhdhSecondary.main}`,
-          border: "0",
           "&:hover": {
-            border: "0",
-            boxShadow: `inset 0 0 0 2px ${rhdhSecondary.main}`,
             backgroundColor: "transparent",
-          },
-          "&:focus-visible": {
-            boxShadow: `inset 0 0 0 2px ${rhdhSecondary.main}`,
-            outline: `${rhdhSecondary.focusVisibleBorder} solid 1px`,
           },
         },
         text: {
-          color: rhdhPrimary.main,
-          "&:hover": {
-            color: rhdhPrimary.textHover,
-            backgroundColor: "transparent",
-          },
           "&:focus-visible": {
             boxShadow: `inset 0 0 0 2px ${rhdhPrimary.main}`,
             outline: `${rhdhPrimary.focusVisibleBorder} solid 1px`,
-          },
-        },
-        textPrimary: {
-          color: rhdhPrimary.main,
-          "&:hover": {
-            color: rhdhPrimary.textHover,
-            backgroundColor: "transparent",
-          },
-        },
-        textSecondary: {
-          color: rhdhSecondary.main,
-          "&:hover": {
-            color: rhdhSecondary.textHover,
-            backgroundColor: "transparent",
           },
         },
       },
@@ -323,7 +264,6 @@ export const components = (themeConfig: ThemeConfig): Components => {
             fontSize: "1.125rem",
           },
           '& > a[class*="MuiIconButton-root"]:hover': {
-            color: rhdhPrimary.textHover,
             backgroundColor: "transparent",
           },
         },

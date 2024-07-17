@@ -7,17 +7,12 @@ export const customLightTheme = (): ThemeConfigPalette => {
   return {
     ...palette,
     primary: {
-      ...palette.primary,
       main: "#0066CC",
-      dark: "#004080",
     },
     secondary: {
-      ...palette.secondary,
       main: "#8476D1",
-      dark: "#6753AC",
     },
     navigation: {
-      ...palette.navigation,
       background: "#222427",
       indicator: "#0066CC",
       color: "#ffffff",
@@ -58,17 +53,11 @@ export const customLightTheme = (): ThemeConfigPalette => {
       },
       primary: {
         main: "#0066CC",
-        containedButtonBackground: "#0066CC",
-        textHover: "#004080",
         focusVisibleBorder: "#0066CC",
-        dark: "#004080",
       },
       secondary: {
         main: "#8476D1",
-        containedButtonBackground: "#8476D1",
-        textHover: "#6753AC",
         focusVisibleBorder: "#8476D1",
-        dark: "#6753AC",
       },
     },
   };
