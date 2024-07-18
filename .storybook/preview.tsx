@@ -81,7 +81,17 @@ const themes: Record<string, Theme> = {
   "RHDH Dark 1-2-0": { unifiedThemeOptions: rhdh120.customDarkTheme({}) },
 
   "RHDH Light latest": {
-    themeConfig: {},
+    themeConfig: {
+      palette: {
+        // rhdh: {
+        //   cards: {
+        //     headerBackgroundColor: '#f00',
+        //     headerBackgroundImage: 'none',
+        //     headerTextColor: '#f0f',
+        //   },
+        // },
+      },
+    },
   },
   "RHDH Dark latest": {
     themeConfig: {

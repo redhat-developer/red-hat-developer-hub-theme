@@ -523,7 +523,7 @@ export const components = (themeConfig: ThemeConfig): Components => {
     components.BackstageItemCardHeader = {
       styleOverrides: {
         root: {
-          '&[class*="MuiBox-root-"]': {
+          '&[class~="MuiBox-root"]': {
             color: palette.rhdh?.cards?.headerTextColor,
             backgroundColor: palette.rhdh?.cards?.headerBackgroundColor,
             backgroundImage: palette.rhdh?.cards?.headerBackgroundImage,
