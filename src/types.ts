@@ -9,12 +9,9 @@ export interface RHDHThemePalette {
     searchBarBorderColor: string;
     formControlBackgroundColor: string;
     mainSectionBackgroundColor: string;
-    headerBackgroundColor: string;
-    headerTextColor: string;
     headerBottomBorderColor: string;
     cardBackgroundColor: string;
     sideBarBackgroundColor: string;
-    cardSubtitleColor: string;
     cardBorderColor: string;
     tableTitleColor: string;
     tableSubtitleColor: string;
@@ -34,6 +31,12 @@ export interface RHDHThemePalette {
   secondary: {
     main: string;
     focusVisibleBorder: string;
+  };
+
+  cards?: {
+    headerTextColor: string;
+    headerBackgroundColor: string;
+    headerBackgroundImage: string;
   };
 }
 
