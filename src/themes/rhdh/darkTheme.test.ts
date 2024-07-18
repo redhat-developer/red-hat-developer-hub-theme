@@ -82,12 +82,9 @@ describe("customDarkTheme", () => {
           searchBarBorderColor: "#57585a",
           formControlBackgroundColor: "#36373A",
           mainSectionBackgroundColor: "#0f1214",
-          headerBackgroundColor: "#0f1214",
-          headerTextColor: "#FFF",
           headerBottomBorderColor: "#A3A3A3",
           cardBackgroundColor: "#292929",
           sideBarBackgroundColor: "#1b1d21",
-          cardSubtitleColor: "#FFF",
           cardBorderColor: "#A3A3A3",
           tableTitleColor: "#E0E0E0",
           tableSubtitleColor: "#E0E0E0",
@@ -105,6 +102,11 @@ describe("customDarkTheme", () => {
         secondary: {
           main: "#B2A3FF",
           focusVisibleBorder: "#D0C7FF",
+        },
+        cards: {
+          headerTextColor: "#FFF",
+          headerBackgroundColor: "#0f1214",
+          headerBackgroundImage: "none",
         },
       },
     });

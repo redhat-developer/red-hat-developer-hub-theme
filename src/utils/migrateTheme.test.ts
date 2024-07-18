@@ -126,6 +126,34 @@ const testCases: TestCase[] = [
     },
   },
   {
+    name: "Pass pageThemes",
+    config: {
+      pageTheme: {
+        default: {
+          fontColor: "#000000",
+          backgroundColor: "#ff0000",
+        },
+        gradient: {
+          fontColor: "#000000",
+          backgroundColor: ["#00ff00", "#0000ff"],
+        },
+      },
+    },
+    expected: {
+      palette: {},
+      pageTheme: {
+        default: {
+          fontColor: "#000000",
+          backgroundColor: "#ff0000",
+        },
+        gradient: {
+          fontColor: "#000000",
+          backgroundColor: ["#00ff00", "#0000ff"],
+        },
+      },
+    },
+  },
+  {
     name: "Pass options as well",
     config: {
       options: {

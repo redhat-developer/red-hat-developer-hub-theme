@@ -29,11 +29,11 @@ export const components = (themeConfig: ThemeConfig): Components => {
 
   const palette = themeConfig.palette ?? {};
 
-  const rhdh = palette.rhdh;
-  const general = rhdh?.general || ({} as RHDHThemePalette["general"]);
-  const rhdhPrimary = rhdh?.primary || ({} as RHDHThemePalette["primary"]);
+  const general = palette.rhdh?.general || ({} as RHDHThemePalette["general"]);
+  const rhdhPrimary =
+    palette.rhdh?.primary || ({} as RHDHThemePalette["primary"]);
   const rhdhSecondary =
-    rhdh?.secondary || ({} as RHDHThemePalette["secondary"]);
+    palette.rhdh?.secondary || ({} as RHDHThemePalette["secondary"]);
 
   const components: Components = {};
   if (options.components === "backstage" || options.components === "mui") {
@@ -276,7 +276,6 @@ export const components = (themeConfig: ThemeConfig): Components => {
           backgroundColor: general.cardBackgroundColor,
           '& > div > div > h2[class*="MuiTypography-h2-"]': {
             textTransform: "unset",
-            color: general.cardSubtitleColor,
             opacity: "40%",
           },
           '& > div > div > div[class*="MuiChip-sizeSmall"]': {
@@ -509,45 +508,14 @@ export const components = (themeConfig: ThemeConfig): Components => {
     components.BackstageHeader = {
       styleOverrides: {
         header: {
-          // color: general.headerTextColor,
-          // backgroundImage: `none, linear-gradient(90deg, ${headerColor1}, ${headerColor2})`,
-          // backgroundColor: general.headerBackgroundColor,
           boxShadow: "none",
           borderBottom: `1px solid ${general.headerBottomBorderColor}`,
         },
         title: {
-          color: general.cardSubtitleColor,
           fontWeight: "bold",
           '&[class*="MuiTypography-h1-"]': {
             fontWeight: "bold",
             fontSize: "2rem",
-          },
-        },
-        leftItemsBox: {
-          color: general.headerTextColor,
-          "& > nav": {
-            color: general.headerTextColor,
-          },
-          "& > p": {
-            color: general.headerTextColor,
-          },
-          "& > span": {
-            color: general.headerTextColor,
-          },
-        },
-        rightItemsBox: {
-          color: general.headerTextColor,
-          "& div": {
-            color: general.headerTextColor,
-          },
-          "& p": {
-            color: general.headerTextColor,
-          },
-          "& a": {
-            color: general.headerTextColor,
-          },
-          "& button": {
-            color: general.headerTextColor,
           },
         },
       },
@@ -556,20 +524,13 @@ export const components = (themeConfig: ThemeConfig): Components => {
       styleOverrides: {
         root: {
           '&[class*="MuiBox-root-"]': {
-            color: general.headerTextColor,
-            backgroundImage: "none",
-            backgroundColor: general.headerBackgroundColor,
+            color: palette.rhdh?.cards?.headerTextColor,
+            backgroundColor: palette.rhdh?.cards?.headerBackgroundColor,
+            backgroundImage: palette.rhdh?.cards?.headerBackgroundImage,
             borderBottom: `1px solid ${general.cardBorderColor}`,
           },
           '& > h3[class*="MuiTypography-subtitle2-"] > div > div:first-child': {
-            color: general.tableSubtitleColor,
             textTransform: "capitalize",
-          },
-          '& > h3[class*="MuiTypography-subtitle2-"] > div > div:last-child': {
-            color: general.cardSubtitleColor,
-          },
-          '& > h4[class*="MuiTypography-h6-"]': {
-            color: general.cardSubtitleColor,
           },
         },
       },

@@ -19,6 +19,7 @@ export const getDefaultThemeConfig = (mode: "light" | "dark"): ThemeConfig => {
     pageTheme: {
       default: {
         backgroundColor: mode === "dark" ? "#0f1214" : "#ffffff",
+        fontColor: mode === "dark" ? "#ffffff" : "#000000",
       },
     },
     options: {},

@@ -14,7 +14,7 @@ describe("useThemeOptions", () => {
         default: {
           backgroundImage: "none,  linear-gradient(90deg, #ffffff, #ffffff)",
           colors: ["#ffffff"],
-          fontColor: "#FFFFFF",
+          fontColor: "#000000",
           shape: "none",
         },
       },
@@ -39,7 +39,7 @@ describe("useThemeOptions", () => {
         default: {
           backgroundImage: "none,  linear-gradient(90deg, #0f1214, #0f1214)",
           colors: ["#0f1214"],
-          fontColor: "#FFFFFF",
+          fontColor: "#ffffff",
           shape: "none",
         },
       },

@@ -86,12 +86,9 @@ describe("customLightTheme", () => {
           searchBarBorderColor: "#E4E4E4",
           formControlBackgroundColor: "#FFF",
           mainSectionBackgroundColor: "#FFF",
-          headerBackgroundColor: "#FFF",
-          headerTextColor: "#151515",
           headerBottomBorderColor: "#C7C7C7",
           cardBackgroundColor: "#FFF",
           sideBarBackgroundColor: "#212427",
-          cardSubtitleColor: "#000",
           cardBorderColor: "#C7C7C7",
           tableTitleColor: "#181818",
           tableSubtitleColor: "#616161",
@@ -109,6 +106,11 @@ describe("customLightTheme", () => {
         secondary: {
           main: "#8476D1",
           focusVisibleBorder: "#8476D1",
+        },
+        cards: {
+          headerTextColor: "#151515",
+          headerBackgroundColor: "#FFF",
+          headerBackgroundImage: "none",
         },
       },
     });
