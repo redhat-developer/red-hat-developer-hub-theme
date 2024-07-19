@@ -523,7 +523,10 @@ export const components = (themeConfig: ThemeConfig): Components => {
     components.BackstageItemCardHeader = {
       styleOverrides: {
         root: {
-          '&[class~="MuiBox-root"]': {
+          // This is required to increase the css specificity, to OVERRIDE the styles from
+          // BackstageItemCardHeader (https://github.com/backstage/backstage/blob/master/packages/core-components/src/layout/ItemCard/ItemCardHeader.tsx)
+          // These are applied with a CSS class as well.
+          '&[class*="MuiBox-root-"]': {
             color: palette.rhdh?.cards?.headerTextColor,
             backgroundColor: palette.rhdh?.cards?.headerBackgroundColor,
             backgroundImage: palette.rhdh?.cards?.headerBackgroundImage,

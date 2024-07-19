@@ -85,9 +85,9 @@ const themes: Record<string, Theme> = {
       palette: {
         // rhdh: {
         //   cards: {
-        //     headerBackgroundColor: '#f00',
+        //     headerBackgroundColor: '#fdd',
         //     headerBackgroundImage: 'none',
-        //     headerTextColor: '#f0f',
+        //     headerTextColor: '#f00',
         //   },
         // },
       },
