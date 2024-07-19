@@ -526,7 +526,16 @@ export const components = (themeConfig: ThemeConfig): Components => {
           // This is required to increase the css specificity, to OVERRIDE the styles from
           // BackstageItemCardHeader (https://github.com/backstage/backstage/blob/master/packages/core-components/src/layout/ItemCard/ItemCardHeader.tsx)
           // These are applied with a CSS class as well.
+
+          // This variant is used when running the Storybook locally (dev mode) and in Backstage/RHDH!
           '&[class*="MuiBox-root-"]': {
+            color: palette.rhdh?.cards?.headerTextColor,
+            backgroundColor: palette.rhdh?.cards?.headerBackgroundColor,
+            backgroundImage: palette.rhdh?.cards?.headerBackgroundImage,
+            borderBottom: `1px solid ${general.cardBorderColor}`,
+          },
+          // This variant is used when building a static Storybook (`storybook:build`)
+          '&[class~="MuiBox-root"]': {
             color: palette.rhdh?.cards?.headerTextColor,
             backgroundColor: palette.rhdh?.cards?.headerBackgroundColor,
             backgroundImage: palette.rhdh?.cards?.headerBackgroundImage,
