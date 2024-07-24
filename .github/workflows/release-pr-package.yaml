@@ -30,17 +30,22 @@ jobs:
         run: npm test
       - name: Publish to npm
         run: |
-          npm version "0.0.0-pr-${{ github.event.number }}" --no-git-tag-version
+          # bash
+          short_sha=${GITHUB_SHA::7}
+          npm version "0.0.0-pr-${{ github.event.number }}-${short_sha}" --no-git-tag-version
           npm publish --access=public --tag=latest-pr
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Comment the image pull link
+      - name: Add comment
         uses: actions/github-script@v7
         with:
           script: |
+            // js
+            short_sha = process.env.GITHUB_SHA.slice(0, 7)
+            version = `0.0.0-pr-${{ github.event.number }}-${short_sha}`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'The image is available at: `@redhat-developer/red-hat-developer-hub-theme@0.0.0-pr-${{ github.event.number }}`'
+              body: `New package is available at: \`@redhat-developer/red-hat-developer-hub-theme@${version}\``
             })
