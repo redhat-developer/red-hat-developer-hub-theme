@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  release-npm-package:
+  release-next-package:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,11 +19,15 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
       - name: Publish to npm
         run: |
           latest_version=$(npm view @redhat-developer/red-hat-developer-hub-theme@latest version)
           npm version $latest_version --no-git-tag-version
           npm version patch           --no-git-tag-version
-          npm publish --access=public --tag=latest
+          npm publish --access=public --tag=next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
