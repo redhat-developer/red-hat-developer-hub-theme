@@ -1,4 +1,4 @@
-name: build-lint-lint
+name: build-lint-test
 
 on: [push, pull_request]
 
