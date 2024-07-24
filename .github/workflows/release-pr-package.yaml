@@ -1,0 +1,46 @@
+name: release-pr-package
+
+# SECURITY NOTE:
+# pull_request_target is used to run the workflow on pull requests from ANY FORK!
+# This is required to have access to the secret to publish the PR to npm.
+# For that reason, any outside collaborator requires approval from a contributor.
+# https://github.com/redhat-developer/red-hat-developer-hub-theme/settings/actions
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  release-pr-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
+      - name: Publish to npm
+        run: |
+          npm version "0.0.0-pr-${{ github.event.number }}" --no-git-tag-version
+          npm publish --access=public --tag=latest-pr
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Comment the image pull link
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'The image is available at: `@redhat-developer/red-hat-developer-hub-theme@0.0.0-pr-${{ github.event.number }}`'
+            })
