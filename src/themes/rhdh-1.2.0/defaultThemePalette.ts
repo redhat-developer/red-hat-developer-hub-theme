@@ -12,7 +12,7 @@ export const defaultThemePalette = (mode: string, themeColors: ThemeColors) => {
         headerBackgroundColor: "#0f1214",
         headerTextColor: "#FFF",
         headerBottomBorderColor: "#A3A3A3",
-        cardBackgroundColor: "#1b1d21",
+        cardBackgroundColor: "#292929",
         focusVisibleBorder: "#ADD6FF",
         sideBarBackgroundColor: "#1b1d21",
         cardSubtitleColor: "#FFF",
