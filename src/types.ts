@@ -6,7 +6,6 @@ export interface RHDHThemePalette {
   general: {
     disabledBackground: string;
     disabled: string;
-    searchBarBorderColor: string;
     formControlBackgroundColor: string;
     mainSectionBackgroundColor: string;
     headerBottomBorderColor: string;

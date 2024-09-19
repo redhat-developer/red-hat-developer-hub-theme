@@ -79,7 +79,6 @@ describe("customDarkTheme", () => {
         general: {
           disabledBackground: "#444548",
           disabled: "#AAABAC",
-          searchBarBorderColor: "#57585a",
           formControlBackgroundColor: "#36373A",
           mainSectionBackgroundColor: "#0f1214",
           headerBottomBorderColor: "#A3A3A3",

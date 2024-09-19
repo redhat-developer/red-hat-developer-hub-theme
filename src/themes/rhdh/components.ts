@@ -481,13 +481,6 @@ export const components = (themeConfig: ThemeConfig): Components => {
       styleOverrides: {
         root: {
           backgroundColor: general.mainSectionBackgroundColor,
-          "& div:first-child": {
-            '& > div[class*="-searchBar"]': {
-              backgroundColor: general.formControlBackgroundColor,
-              border: `1px solid ${general.searchBarBorderColor}`,
-              boxShadow: "none",
-            },
-          },
         },
       },
     };
