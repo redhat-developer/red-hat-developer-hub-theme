@@ -11,7 +11,7 @@ export interface RHDHThemePalette {
     headerBottomBorderColor: string;
     cardBackgroundColor: string;
     /** @deprecated please use `sidebarBackgroundColor` instead */
-    sideBarBackgroundColor: string;
+    sideBarBackgroundColor?: string;
     sidebarBackgroundColor: string;
     sidebarItemSelectedBackgroundColor: string;
     cardBorderColor: string;
