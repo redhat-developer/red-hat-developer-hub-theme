@@ -454,7 +454,11 @@ export const components = (themeConfig: ThemeConfig): Components => {
     components.BackstageSidebar = {
       styleOverrides: {
         drawer: {
-          backgroundColor: general.sideBarBackgroundColor,
+          backgroundColor:
+            general.sidebarBackgroundColor ?? general.sideBarBackgroundColor,
+          '& a[class*="BackstageSidebarItem-selected-"]': {
+            backgroundColor: general.sidebarItemSelectedBackgroundColor,
+          },
         },
       },
     };

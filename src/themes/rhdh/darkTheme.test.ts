@@ -84,6 +84,8 @@ describe("customDarkTheme", () => {
           headerBottomBorderColor: "#A3A3A3",
           cardBackgroundColor: "#1b1d21",
           sideBarBackgroundColor: "#1b1d21",
+          sidebarBackgroundColor: "#1b1d21",
+          sidebarItemSelectedBackgroundColor: "#4F5255",
           cardBorderColor: "#A3A3A3",
           tableTitleColor: "#E0E0E0",
           tableSubtitleColor: "#E0E0E0",

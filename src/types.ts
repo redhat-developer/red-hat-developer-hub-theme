@@ -10,7 +10,10 @@ export interface RHDHThemePalette {
     mainSectionBackgroundColor: string;
     headerBottomBorderColor: string;
     cardBackgroundColor: string;
+    /** @deprecated please use `sidebarBackgroundColor` instead */
     sideBarBackgroundColor: string;
+    sidebarBackgroundColor: string;
+    sidebarItemSelectedBackgroundColor: string;
     cardBorderColor: string;
     tableTitleColor: string;
     tableSubtitleColor: string;
