@@ -25,9 +25,8 @@ jobs:
         run: npm test
       - name: Publish to npm
         run: |
-          next_version=$(npm view @redhat-developer/red-hat-developer-hub-theme@next version)
-          npm version $next_version   --no-git-tag-version
-          npm version patch           --no-git-tag-version
-          npm publish --access=public --tag=next
+          version="0.0.0-main-${short_sha}"
+          npm version "$version" --no-git-tag-version
+          npm publish --access=public --tag=latest-pr
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

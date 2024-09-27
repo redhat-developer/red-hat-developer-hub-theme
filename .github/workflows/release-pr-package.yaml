@@ -37,7 +37,8 @@ jobs:
           # bash
           full_sha="${{ github.event.pull_request.head.sha }}"
           short_sha="${full_sha::7}"
-          npm version "0.0.0-pr-${{ github.event.number }}-${short_sha}" --no-git-tag-version
+          version="0.0.0-pr-${{ github.event.number }}-${short_sha}"
+          npm version "$version" --no-git-tag-version
           npm publish --access=public --tag=latest-pr
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -46,9 +47,9 @@ jobs:
         with:
           script: |
             // js
-            full_sha = "${{ github.event.pull_request.head.sha }}"
-            short_sha = full_sha.slice(0, 7)
-            version = `0.0.0-pr-${{ github.event.number }}-${short_sha}`
+            full_sha="${{ github.event.pull_request.head.sha }}"
+            short_sha=full_sha.slice(0, 7)
+            version=`0.0.0-pr-${{ github.event.number }}-${short_sha}`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
