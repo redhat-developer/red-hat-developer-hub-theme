@@ -35,7 +35,7 @@ jobs:
       - name: Publish to npm
         run: |
           # bash
-          short_sha=${GITHUB_SHA::7}
+          short_sha=${"${{ github.event.pull_request.head.sha }}"::7}
           npm version "0.0.0-pr-${{ github.event.number }}-${short_sha}" --no-git-tag-version
           npm publish --access=public --tag=latest-pr
         env:
@@ -45,7 +45,7 @@ jobs:
         with:
           script: |
             // js
-            short_sha = process.env.GITHUB_SHA.slice(0, 7)
+            short_sha = "${{ github.event.pull_request.head.sha }}".slice(0, 7)
             version = `0.0.0-pr-${{ github.event.number }}-${short_sha}`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
