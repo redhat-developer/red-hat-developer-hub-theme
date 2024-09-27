@@ -55,7 +55,7 @@ describe("customLightTheme", () => {
         main: "#0066CC",
       },
       secondary: {
-        main: "#8476D1",
+        main: "#0066CC",
       },
       status: {
         aborted: "#757575",
@@ -103,8 +103,8 @@ describe("customLightTheme", () => {
           focusVisibleBorder: "#0066CC",
         },
         secondary: {
-          main: "#8476D1",
-          focusVisibleBorder: "#8476D1",
+          main: "#0066CC",
+          focusVisibleBorder: "#0066CC",
         },
         cards: {
           headerTextColor: "#151515",
