@@ -30,5 +30,12 @@ jobs:
           version="0.0.0-main-${short_sha}"
           npm version "$version" --no-git-tag-version
           npm publish --access=public --tag=next
+
+          npm unpublish "@redhat-developer/red-hat-developer-hub-theme@0.0.0-main-" --force
+          npm unpublish "@redhat-developer/red-hat-developer-hub-theme@0.1.16" --force
+          npm unpublish "@redhat-developer/red-hat-developer-hub-theme@0.1.17" --force
+          npm unpublish "@redhat-developer/red-hat-developer-hub-theme@0.1.18" --force
+          npm unpublish "@redhat-developer/red-hat-developer-hub-theme@0.1.19" --force
+          npm unpublish "@redhat-developer/red-hat-developer-hub-theme@0.1.20" --force
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
