@@ -83,7 +83,6 @@ describe("customLightTheme", () => {
         general: {
           disabledBackground: "#D2D2D2",
           disabled: "#6A6E73",
-          searchBarBorderColor: "#E4E4E4",
           formControlBackgroundColor: "#FFF",
           mainSectionBackgroundColor: "#FFF",
           headerBottomBorderColor: "#C7C7C7",
