@@ -6,6 +6,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
+import Stack from "@mui/material/Stack";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
@@ -16,27 +17,49 @@ export default {
 } satisfies Meta;
 
 export const WithLabels: StoryObj = {
-  render: (args) => (
-    <FormGroup>
-      <FormControlLabel
-        control={<Checkbox defaultChecked />}
-        label="Label"
-        {...args}
-      />
-      <FormControlLabel
-        required
-        control={<Checkbox />}
-        label="Required"
-        {...args}
-      />
-      <FormControlLabel
-        disabled
-        control={<Checkbox />}
-        label="Disabled"
-        {...args}
-      />
-    </FormGroup>
-  ),
+  render: (args) => {
+    const colors = [
+      undefined,
+      "primary",
+      "secondary",
+      "error",
+      "info",
+      "success",
+      "warning",
+      "default",
+    ] as const;
+
+    return (
+      <Stack spacing={2} direction="row">
+        {colors.map((color) => (
+          <Stack key={color} spacing={2} direction="column">
+            <h1>
+              Color: {color === undefined ? "undefined" : JSON.stringify(color)}
+            </h1>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox color={color} defaultChecked />}
+                label="Label"
+                {...args}
+              />
+              <FormControlLabel
+                required
+                control={<Checkbox color={color} />}
+                label="Required"
+                {...args}
+              />
+              <FormControlLabel
+                disabled
+                control={<Checkbox color={color} />}
+                label="Disabled"
+                {...args}
+              />
+            </FormGroup>
+          </Stack>
+        ))}
+      </Stack>
+    );
+  },
 };
 
 export const FormGroupExample: StoryObj = {

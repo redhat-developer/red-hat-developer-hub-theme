@@ -215,6 +215,14 @@ export const components = (themeConfig: ThemeConfig): Components => {
     };
   }
 
+  if (options.inputs !== "mui") {
+    components.MuiCheckbox = {
+      defaultProps: {
+        color: "primary",
+      },
+    };
+  }
+
   // MUI accordion
   if (options.accordions !== "mui") {
     components.MuiAccordion = {

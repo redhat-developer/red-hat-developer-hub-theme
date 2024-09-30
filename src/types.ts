@@ -66,6 +66,8 @@ export interface ThemeOptions {
 
   inputs?: "patternfly" | "mui";
 
+  checkbox?: "patternfly" | "mui";
+
   accordions?: "patternfly" | "mui";
 
   sidebars?: "patternfly" | "mui";

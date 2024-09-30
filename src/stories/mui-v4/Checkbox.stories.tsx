@@ -6,6 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
+import Grid from "@material-ui/core/Grid";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
@@ -16,22 +17,38 @@ export default {
 } satisfies Meta;
 
 export const WithLabels: StoryObj = {
-  render: (args) => (
-    <FormGroup>
-      <FormControlLabel
-        control={<Checkbox defaultChecked />}
-        label="Label"
-        {...args}
-      />
-      <FormControlLabel control={<Checkbox />} label="Required" {...args} />
-      <FormControlLabel
-        disabled
-        control={<Checkbox />}
-        label="Disabled"
-        {...args}
-      />
-    </FormGroup>
-  ),
+  render: (args) => {
+    const colors = [undefined, "default", "primary", "secondary"] as const;
+    return (
+      <Grid container spacing={2}>
+        {colors.map((color) => (
+          <Grid key={color} item>
+            <h1>
+              Color: {color === undefined ? "undefined" : JSON.stringify(color)}
+            </h1>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox color={color} defaultChecked />}
+                label="Label"
+                {...args}
+              />
+              <FormControlLabel
+                control={<Checkbox color={color} />}
+                label="Required"
+                {...args}
+              />
+              <FormControlLabel
+                disabled
+                control={<Checkbox color={color} />}
+                label="Disabled"
+                {...args}
+              />
+            </FormGroup>
+          </Grid>
+        ))}
+      </Grid>
+    );
+  },
 };
 
 export const FormGroupExample: StoryObj = {
