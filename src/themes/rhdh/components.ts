@@ -215,6 +215,14 @@ export const components = (themeConfig: ThemeConfig): Components => {
     };
   }
 
+  if (options.inputs !== "mui") {
+    components.MuiCheckbox = {
+      defaultProps: {
+        color: "primary",
+      },
+    };
+  }
+
   // MUI accordion
   if (options.accordions !== "mui") {
     components.MuiAccordion = {
@@ -390,6 +398,9 @@ export const components = (themeConfig: ThemeConfig): Components => {
   // MUI tabs
   if (options.tabs !== "mui") {
     components.MuiTabs = {
+      defaultProps: {
+        indicatorColor: "primary",
+      },
       styleOverrides: {
         root: {
           boxShadow: `0 -1px ${general.tabsBottomBorderColor} inset`,
