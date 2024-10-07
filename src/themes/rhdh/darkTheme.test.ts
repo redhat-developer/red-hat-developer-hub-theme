@@ -55,7 +55,7 @@ describe("customDarkTheme", () => {
         main: "#1FA7F8",
       },
       secondary: {
-        main: "#B2A3FF",
+        main: "#1FA7F8",
       },
       status: {
         aborted: "#9E9E9E",
@@ -100,8 +100,8 @@ describe("customDarkTheme", () => {
           focusVisibleBorder: "#ADD6FF",
         },
         secondary: {
-          main: "#B2A3FF",
-          focusVisibleBorder: "#D0C7FF",
+          main: "#1FA7F8",
+          focusVisibleBorder: "#ADD6FF",
         },
         cards: {
           headerTextColor: "#FFF",

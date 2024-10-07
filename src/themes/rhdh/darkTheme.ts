@@ -10,7 +10,7 @@ export const customDarkTheme = (): ThemeConfigPalette => {
       main: "#1FA7F8",
     },
     secondary: {
-      main: "#B2A3FF",
+      main: "#1FA7F8",
     },
     navigation: {
       background: "#0f1214",
@@ -49,8 +49,8 @@ export const customDarkTheme = (): ThemeConfigPalette => {
         focusVisibleBorder: "#ADD6FF",
       },
       secondary: {
-        main: "#B2A3FF",
-        focusVisibleBorder: "#D0C7FF",
+        main: "#1FA7F8",
+        focusVisibleBorder: "#ADD6FF",
       },
       cards: {
         headerTextColor: "#FFF",

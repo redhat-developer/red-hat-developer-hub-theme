@@ -10,7 +10,7 @@ export const customLightTheme = (): ThemeConfigPalette => {
       main: "#0066CC",
     },
     secondary: {
-      main: "#8476D1",
+      main: "#0066CC",
     },
     navigation: {
       background: "#222427",
@@ -53,8 +53,8 @@ export const customLightTheme = (): ThemeConfigPalette => {
         focusVisibleBorder: "#0066CC",
       },
       secondary: {
-        main: "#8476D1",
-        focusVisibleBorder: "#8476D1",
+        main: "#0066CC",
+        focusVisibleBorder: "#0066CC",
       },
       cards: {
         headerTextColor: "#151515",
