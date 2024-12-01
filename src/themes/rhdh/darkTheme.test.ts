@@ -5,7 +5,7 @@ describe("customDarkTheme", () => {
     expect(customDarkTheme()).toEqual({
       background: {
         default: "#333333",
-        paper: "#424242",
+        paper: "#1b1d21",
       },
       banner: {
         closeButtonColor: "#FFFFFF",
@@ -86,6 +86,7 @@ describe("customDarkTheme", () => {
           sidebarBackgroundColor: "#1b1d21",
           sidebarItemSelectedBackgroundColor: "#4F5255",
           cardBorderColor: "#A3A3A3",
+          paperBorderColor: "#A3A3A3",
           tableTitleColor: "#E0E0E0",
           tableSubtitleColor: "#E0E0E0",
           tableColumnTitleColor: "#E0E0E0",

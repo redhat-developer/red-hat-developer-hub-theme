@@ -24,6 +24,10 @@ export const customDarkTheme = (): ThemeConfigPalette => {
         background: "#0f1214",
       },
     },
+    background: {
+      default: "#333333",
+      paper: "#1b1d21",
+    },
     rhdh: {
       general: {
         disabledBackground: "#444548",
@@ -35,6 +39,7 @@ export const customDarkTheme = (): ThemeConfigPalette => {
         sidebarBackgroundColor: "#1b1d21",
         sidebarItemSelectedBackgroundColor: "#4F5255",
         cardBorderColor: "#A3A3A3",
+        paperBorderColor: "#A3A3A3",
         tableTitleColor: "#E0E0E0",
         tableSubtitleColor: "#E0E0E0",
         tableColumnTitleColor: "#E0E0E0",

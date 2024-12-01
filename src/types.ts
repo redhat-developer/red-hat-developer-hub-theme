@@ -15,6 +15,7 @@ export interface RHDHThemePalette {
     sidebarBackgroundColor: string;
     sidebarItemSelectedBackgroundColor: string;
     cardBorderColor: string;
+    paperBorderColor: string;
     tableTitleColor: string;
     tableSubtitleColor: string;
     tableColumnTitleColor: string;

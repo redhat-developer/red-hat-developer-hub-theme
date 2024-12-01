@@ -28,6 +28,10 @@ export const customLightTheme = (): ThemeConfigPalette => {
       primary: "#151515",
       secondary: "#757575",
     },
+    background: {
+      default: "#F8F8F8",
+      paper: "#FFFFFF",
+    },
     rhdh: {
       general: {
         disabledBackground: "#D2D2D2",
@@ -39,6 +43,7 @@ export const customLightTheme = (): ThemeConfigPalette => {
         sidebarBackgroundColor: "#212427",
         sidebarItemSelectedBackgroundColor: "#4F5255",
         cardBorderColor: "#C7C7C7",
+        paperBorderColor: "#C7C7C7",
         tableTitleColor: "#181818",
         tableSubtitleColor: "#616161",
         tableColumnTitleColor: "#151515",

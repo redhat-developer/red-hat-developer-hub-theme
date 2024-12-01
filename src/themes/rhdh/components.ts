@@ -62,7 +62,6 @@ export const components = (themeConfig: ThemeConfig): Components => {
       styleOverrides: {
         root: {
           boxShadow: "none",
-          backgroundColor: general.cardBackgroundColor,
           // hide the first child element which is a divider with MuiDivider-root classname in MuiPaper
           '& > hr:first-child[class|="MuiDivider-root"]': {
             height: 0,
@@ -81,17 +80,14 @@ export const components = (themeConfig: ThemeConfig): Components => {
         },
         elevation1: {
           boxShadow: "none",
-          borderRadius: "0",
-          outline: `1px solid ${general.cardBorderColor}`,
+          outline: `1px solid ${general.paperBorderColor}`,
           '& > hr[class|="MuiDivider-root"]': {
-            backgroundColor: general.cardBorderColor,
+            backgroundColor: general.paperBorderColor,
           },
         },
         elevation2: {
-          backgroundColor: general.tableBackgroundColor,
           boxShadow: "none",
-          outline: `1px solid ${general.cardBorderColor}`,
-          padding: "1rem",
+          outline: `1px solid ${general.paperBorderColor}`,
         },
       },
     };
