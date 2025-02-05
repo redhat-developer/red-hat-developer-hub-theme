@@ -97,6 +97,18 @@ export const components = (themeConfig: ThemeConfig): Components => {
     };
   }
 
+  // MUI AppBar
+  if (options.headers !== "mui") {
+    components.MuiAppBar = {
+      styleOverrides: {
+        root: {
+          backgroundColor: general.sidebarBackgroundColor,
+          backgroundImage: "none",
+        },
+      },
+    }
+  }
+
   // MUI buttons
   // Don't disableRipple for MuiButtonBase as it will affect all the buttons
   // and we need to ensure that the buttons have a right touch and focus styling.
@@ -466,7 +478,7 @@ export const components = (themeConfig: ThemeConfig): Components => {
       styleOverrides: {
         drawer: {
           backgroundColor:
-            general.sidebarBackgroundColor ?? general.sideBarBackgroundColor,
+            general.sidebarBackgroundColor ?? general.sidebarBackgroundColor,
           '& a[class*="BackstageSidebarItem-selected-"]': {
             backgroundColor: general.sidebarItemSelectedBackgroundColor,
           },
