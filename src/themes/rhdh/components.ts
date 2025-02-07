@@ -102,11 +102,13 @@ export const components = (themeConfig: ThemeConfig): Components => {
     components.MuiAppBar = {
       styleOverrides: {
         root: {
-          backgroundColor: general.globalHeaderBackgroundColor ?? general.sidebarBackgroundColor,
+          backgroundColor:
+            general.globalHeaderBackgroundColor ??
+            general.sidebarBackgroundColor,
           backgroundImage: "none",
         },
       },
-    }
+    };
   }
 
   // MUI buttons
