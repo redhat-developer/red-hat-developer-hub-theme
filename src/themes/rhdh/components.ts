@@ -102,7 +102,7 @@ export const components = (themeConfig: ThemeConfig): Components => {
     components.MuiAppBar = {
       styleOverrides: {
         root: {
-          backgroundColor: general.sidebarBackgroundColor,
+          backgroundColor: general.globalHeaderBackgroundColor ?? general.sidebarBackgroundColor,
           backgroundImage: "none",
         },
       },
@@ -156,6 +156,11 @@ export const components = (themeConfig: ThemeConfig): Components => {
         outlined: {
           "&:hover": {
             backgroundColor: "transparent",
+          },
+          "&:disabled": {
+            color: general.disabled,
+            backgroudColor: general.disabledBackground,
+            border: `1px solid ${general.disabledBackground}`,
           },
         },
         outlinedPrimary: {
@@ -478,7 +483,7 @@ export const components = (themeConfig: ThemeConfig): Components => {
       styleOverrides: {
         drawer: {
           backgroundColor:
-            general.sidebarBackgroundColor ?? general.sidebarBackgroundColor,
+            general.sidebarBackgroundColor ?? general.sideBarBackgroundColor,
           '& a[class*="BackstageSidebarItem-selected-"]': {
             backgroundColor: general.sidebarItemSelectedBackgroundColor,
           },

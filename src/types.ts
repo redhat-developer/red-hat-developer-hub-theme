@@ -23,6 +23,7 @@ export interface RHDHThemePalette {
     tableBackgroundColor: string;
     tabsBottomBorderColor: string;
     contrastText: string;
+    globalHeaderBackgroundColor: string;
   };
 
   primary: {
