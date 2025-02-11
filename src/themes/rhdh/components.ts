@@ -98,14 +98,12 @@ export const components = (themeConfig: ThemeConfig): Components => {
   }
 
   // MUI AppBar
-  if (options.headers !== "mui") {
+  if (options.appBar !== "mui") {
     components.MuiAppBar = {
       styleOverrides: {
         root: {
-          backgroundColor:
-            general.globalHeaderBackgroundColor ??
-            general.sidebarBackgroundColor,
-          backgroundImage: "none",
+          backgroundColor: general.appBarBackgroundColor,
+          backgroundImage: general.appBarBackgroundImage,
         },
       },
     };
