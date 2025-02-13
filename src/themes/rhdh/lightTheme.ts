@@ -47,6 +47,8 @@ export const customLightTheme = (): ThemeConfigPalette => {
         tableBackgroundColor: "#FFF",
         tabsBottomBorderColor: "#D2D2D2",
         contrastText: "#FFF",
+        appBarBackgroundColor: "#212427",
+        appBarBackgroundImage: "none",
       },
       primary: {
         main: "#0066CC",

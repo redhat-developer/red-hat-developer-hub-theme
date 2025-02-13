@@ -43,6 +43,8 @@ export const customDarkTheme = (): ThemeConfigPalette => {
         tableBackgroundColor: "#1b1d21",
         tabsBottomBorderColor: "#444548",
         contrastText: "#FFF",
+        appBarBackgroundColor: "#1b1d21",
+        appBarBackgroundImage: "none",
       },
       primary: {
         main: "#1FA7F8",
