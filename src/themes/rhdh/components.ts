@@ -120,10 +120,10 @@ export const components = (themeConfig: ThemeConfig): Components => {
       styleOverrides: {
         root: {
           textTransform: "none",
-          border: "0",
           borderRadius: "3px",
         },
         contained: {
+          border: "0",
           boxShadow: "none",
           "&:hover": {
             border: "0",
